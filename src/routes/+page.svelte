@@ -3,7 +3,9 @@
 	import { getDailyPrompt } from "$lib/promptGenerator";
 	import { getUser, signIn } from "$lib/auth.svelte";
 	import { renderFeedback } from "$lib/renderFeedback";
-	import { gradeColor } from "$lib/gradeRank";
+	import KeywordBubbles from "$lib/components/KeywordBubbles.svelte";
+	import GradeDisplay from "$lib/components/GradeDisplay.svelte";
+	import SentenceInput from "$lib/components/SentenceInput.svelte";
 	const prompt = getDailyPrompt();
 
 	let sentence1 = $state("");
@@ -106,15 +108,7 @@
 			Write a two-sentence
 			<span class="font-semibold">{prompt.type}</span> story about:
 		</h2>
-		<div class="flex gap-4 justify-center">
-			{#each prompt.keywords as keyword}
-				<span
-					class="px-3 py-1 bg-gray-100 text-sm font-medium rounded-full"
-				>
-					{keyword}
-				</span>
-			{/each}
-		</div>
+		<KeywordBubbles keywords={prompt.keywords} />
 	</div>
 
 	{#if !getUser()}
@@ -140,7 +134,7 @@
 				</div>
 			{/if}
 			{#if grade}
-				<p class="text-5xl font-bold {gradeColor(grade)}">{grade}{#if multiplier} <span class="text-gray-400 font-normal">|</span> <span class="text-2xl text-gray-500 font-semibold">{multiplier.toFixed(1)}x</span>{/if}</p>
+				<GradeDisplay {grade} score={multiplier} size="lg" />
 			{:else}
 				<p class="text-2xl font-semibold">Submitted</p>
 			{/if}
@@ -160,45 +154,8 @@
 	{:else}
 		<!-- Input -->
 		<div class="w-full space-y-4">
-			<div>
-				<label
-					for="s1"
-					class="block text-xs font-medium text-gray-500 mb-1"
-				>
-					Sentence 1
-				</label>
-				<textarea
-					id="s1"
-					class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm resize-none focus:outline-none focus:border-gray-400 transition-colors"
-					rows={2}
-					maxlength={150}
-					placeholder="Begin your story..."
-					bind:value={sentence1}
-				></textarea>
-				<p class="text-right text-[11px] text-gray-300 mt-0.5">
-					{sentence1.length}/150
-				</p>
-			</div>
-
-			<div>
-				<label
-					for="s2"
-					class="block text-xs font-medium text-gray-500 mb-1"
-				>
-					Sentence 2
-				</label>
-				<textarea
-					id="s2"
-					class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm resize-none focus:outline-none focus:border-gray-400 transition-colors"
-					rows={2}
-					maxlength={150}
-					placeholder="End your story..."
-					bind:value={sentence2}
-				></textarea>
-				<p class="text-right text-[11px] text-gray-300 mt-0.5">
-					{sentence2.length}/150
-				</p>
-			</div>
+			<SentenceInput id="s1" label="Sentence 1" placeholder="Begin your story..." bind:value={sentence1} />
+			<SentenceInput id="s2" label="Sentence 2" placeholder="End your story..." bind:value={sentence2} />
 		</div>
 
 		{#if error}

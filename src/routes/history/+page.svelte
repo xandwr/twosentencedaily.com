@@ -2,8 +2,10 @@
 	import { supabase } from "$lib/supabaseClient";
 	import { getUser } from "$lib/auth.svelte";
 	import { getDailyPrompt } from "$lib/promptGenerator";
-	import { renderFeedback } from "$lib/renderFeedback";
-	import { gradeRank, gradeColor, gradeBorder } from "$lib/gradeRank";
+	import { gradeRank, gradeColor } from "$lib/gradeRank";
+	import PageHeader from "$lib/components/PageHeader.svelte";
+	import GradeDisplay from "$lib/components/GradeDisplay.svelte";
+	import SubmissionCard from "$lib/components/SubmissionCard.svelte";
 
 	type Tab = "archive" | "mine";
 
@@ -113,10 +115,7 @@
 </script>
 
 <div class="flex flex-col items-center gap-6 w-full">
-	<div class="text-center flex flex-col gap-3 border-b-2 pb-2.5 font-medium w-full">
-		<h1 class="text-xl">History</h1>
-		<p class="text-sm text-neutral-400">Past prompts and submissions from the community.</p>
-	</div>
+	<PageHeader title="History" subtitle="Past prompts and submissions from the community." />
 	<!-- Tabs -->
 	<div class="flex w-full">
 		{#if getUser()}
@@ -160,7 +159,9 @@
 										<div class="flex items-center gap-2 mb-1">
 											<p class="text-xs text-gray-400">{sub.display_name}</p>
 											{#if sub.llm_grade}
-												<span class="ml-auto text-xs font-semibold {gradeColor(sub.llm_grade)}">{sub.llm_grade}{#if sub.score} <span class="font-normal text-gray-300">|</span> {sub.score.toFixed(1)}x{/if}</span>
+												<span class="ml-auto">
+													<GradeDisplay grade={sub.llm_grade} score={sub.score} />
+												</span>
 											{/if}
 										</div>
 										<p>{sub.sentence1}</p>
@@ -193,25 +194,14 @@
 		{:else}
 			<div class="w-full space-y-4">
 				{#each mySubmissions as sub}
-					<div class="border {gradeBorder(sub.llm_grade)} rounded-lg p-5">
-						<div class="flex items-center gap-2">
-							<p class="text-[11px] text-gray-300">
-								{sub.prompt_date}
-							</p>
-							{#if sub.llm_grade}
-								<span class="ml-auto text-xs font-semibold {gradeColor(sub.llm_grade)}">{sub.llm_grade}{#if sub.score} <span class="font-normal text-gray-300">|</span> {sub.score.toFixed(1)}x{/if}</span>
-							{/if}
-						</div>
-						<p class="text-sm leading-relaxed mt-2">
-							{sub.sentence1}
-						</p>
-						<p class="text-sm leading-relaxed mt-1">
-							{sub.sentence2}
-						</p>
-						{#if sub.llm_feedback}
-							<div class="text-xs text-gray-500 leading-relaxed bg-gray-50 rounded p-3 mt-3 whitespace-pre-wrap">{@html renderFeedback(sub.llm_feedback)}</div>
-						{/if}
-					</div>
+					<SubmissionCard
+						sentence1={sub.sentence1}
+						sentence2={sub.sentence2}
+						grade={sub.llm_grade}
+						score={sub.score}
+						feedback={sub.llm_feedback}
+						showFeedback={true}
+					/>
 				{/each}
 			</div>
 		{/if}
