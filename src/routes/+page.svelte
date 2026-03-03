@@ -22,12 +22,14 @@
 		if (!user) return;
 		const { data } = await supabase
 			.from("submissions")
-			.select("id, score, llm_grade, llm_feedback")
+			.select("id, sentence1, sentence2, score, llm_grade, llm_feedback")
 			.eq("user_id", user.id)
 			.eq("prompt_date", prompt.date)
 			.maybeSingle();
 		if (data) {
 			submitted = true;
+			sentence1 = data.sentence1 ?? "";
+			sentence2 = data.sentence2 ?? "";
 			multiplier = data.score;
 			grade = data.llm_grade;
 			feedback = data.llm_feedback;
@@ -129,8 +131,14 @@
 		</div>
 	{:else if submitted}
 		<div class="w-full text-center py-12 space-y-4">
+			{#if sentence1 || sentence2}
+				<div class="text-left text-sm text-gray-700 leading-relaxed bg-gray-50 rounded-lg p-4 italic">
+					{#if sentence1}<p>{sentence1}</p>{/if}
+					{#if sentence2}<p class="mt-1">{sentence2}</p>{/if}
+				</div>
+			{/if}
 			{#if grade}
-				<p class="text-5xl font-bold">{grade}</p>
+				<p class="text-5xl font-bold">{grade}{#if multiplier} <span class="text-gray-400 font-normal">|</span> <span class="text-2xl text-gray-500 font-semibold">{multiplier.toFixed(1)}x</span>{/if}</p>
 			{:else}
 				<p class="text-2xl font-semibold">Submitted</p>
 			{/if}

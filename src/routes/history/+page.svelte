@@ -13,7 +13,7 @@
 		date: string;
 		type: string;
 		keywords: string[];
-		submissions: { sentence1: string; sentence2: string; display_name: string; llm_grade: string | null }[];
+		submissions: { sentence1: string; sentence2: string; display_name: string; score: number | null; llm_grade: string | null }[];
 	}
 
 	interface MySubmission {
@@ -56,7 +56,7 @@
 
 		const subsByDate = new Map<
 			string,
-			{ sentence1: string; sentence2: string; display_name: string; llm_grade: string | null }[]
+			{ sentence1: string; sentence2: string; display_name: string; score: number | null; llm_grade: string | null }[]
 		>();
 		for (const s of (subs ?? []) as any[]) {
 			const list = subsByDate.get(s.prompt_date) ?? [];
@@ -64,6 +64,7 @@
 				sentence1: s.sentence1,
 				sentence2: s.sentence2,
 				display_name: s.profiles?.username ?? s.profiles?.display_name ?? "Anonymous",
+				score: s.score,
 				llm_grade: s.llm_grade,
 			});
 			subsByDate.set(s.prompt_date, list);
@@ -111,7 +112,7 @@
 	<div class="flex w-full border-b border-gray-200">
 		<button
 			onclick={() => switchTab("archive")}
-			class="flex-1 pb-2.5 text-sm font-medium transition-colors {activeTab ===
+			class="flex-1 pb-2.5 text-xl font-medium transition-colors {activeTab ===
 			'archive'
 				? 'text-black border-b-2 border-black'
 				: 'text-gray-400 hover:text-gray-600'}"
@@ -159,7 +160,7 @@
 										<div class="flex items-center gap-2 mb-1">
 											<p class="text-xs text-gray-400">{sub.display_name}</p>
 											{#if sub.llm_grade}
-												<span class="ml-auto text-xs font-semibold text-gray-400">{sub.llm_grade}</span>
+												<span class="ml-auto text-xs font-semibold text-gray-400">{sub.llm_grade}{#if sub.score} <span class="font-normal text-gray-300">|</span> {sub.score.toFixed(1)}x{/if}</span>
 											{/if}
 										</div>
 										<p>{sub.sentence1}</p>
@@ -198,7 +199,7 @@
 								{sub.prompt_date}
 							</p>
 							{#if sub.llm_grade}
-								<span class="ml-auto text-xs font-semibold text-gray-500">{sub.llm_grade}</span>
+								<span class="ml-auto text-xs font-semibold text-gray-500">{sub.llm_grade}{#if sub.score} <span class="font-normal text-gray-300">|</span> {sub.score.toFixed(1)}x{/if}</span>
 							{/if}
 						</div>
 						<p class="text-sm leading-relaxed mt-2">
