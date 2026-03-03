@@ -40,6 +40,7 @@
 		{ href: "/", label: "Play" },
 		{ href: "/today", label: "Today" },
 		{ href: "/history", label: "History" },
+		{ href: "/experiments", label: "Experiments" },
 	];
 </script>
 

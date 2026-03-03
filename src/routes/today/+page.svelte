@@ -80,7 +80,7 @@
 						<span class="text-[11px] text-gray-300">#{i + 1}</span>
 						<span class="text-xs text-gray-400">{sub.display_name}</span>
 						{#if sub.llm_grade}
-							<span class="ml-auto text-xs font-semibold text-gray-500">{sub.llm_grade}</span>
+							<span class="ml-auto text-xs font-semibold text-gray-500">{sub.llm_grade}{#if sub.score} <span class="font-normal text-gray-300">|</span> {sub.score.toFixed(1)}x{/if}</span>
 						{/if}
 					</div>
 					<p class="text-sm leading-relaxed">{sub.sentence1}</p>

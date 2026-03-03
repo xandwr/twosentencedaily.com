@@ -194,30 +194,12 @@ Evaluate:
 
 Be honest but not cruel. This is a game people play for fun.
 
-IMPORTANT: Your response budget is ~600 tokens. Keep feedback concise — aim for 3-5 short sentences total across all categories. Do NOT write paragraph-length analysis for each criterion. Hit the key insight for each and move on. If you feel yourself running long, wrap up immediately with your most important remaining point.`;
+IMPORTANT: Keep feedback concise — aim for 3-5 short sentences total across all categories. Do NOT write paragraph-length analysis for each criterion. Hit the key insight for each and move on.
 
-const GRADING_SCHEMA = {
-  type: "json_schema" as const,
-  json_schema: {
-    name: "judgment",
-    strict: true,
-    schema: {
-      type: "object",
-      properties: {
-        grade: {
-          type: "string",
-          enum: ["A+","A","A-","B+","B","B-","C+","C","C-","D+","D","D-","F"],
-        },
-        feedback: {
-          type: "string",
-          description: "Detailed feedback covering thematic resonance, genre craft, structure, and economy",
-        },
-      },
-      required: ["grade", "feedback"],
-      additionalProperties: false,
-    },
-  },
-};
+Respond with ONLY a JSON object in this exact format (no other text):
+{"grade": "<one of: A+, A, A-, B+, B, B-, C+, C, C-, D+, D, D-, F>", "feedback": "<your feedback>"}`;
+
+const VALID_GRADES = new Set(["A+","A","A-","B+","B","B-","C+","C","C-","D+","D","D-","F"]);
 
 async function gradeSubmission(
   type: string,
@@ -233,7 +215,7 @@ async function gradeSubmission(
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: "openai/gpt-oss-120b",
+      model: "anthropic/claude-haiku-4.5",
       messages: [
         { role: "system", content: GRADING_SYSTEM_PROMPT },
         {
@@ -241,8 +223,7 @@ async function gradeSubmission(
           content: `Type: ${type}\nKeywords: ${keywords.join(", ")}\nxMult: ${xMult.toFixed(2)}\n\nSubmission:\n${sentence1}\n${sentence2}\n\nJudge this submission.`,
         },
       ],
-      response_format: GRADING_SCHEMA,
-      max_tokens: 800,
+      max_tokens: 1000,
     }),
   });
 
@@ -264,7 +245,14 @@ async function gradeSubmission(
   }
 
   try {
-    return JSON.parse(content);
+    // Strip markdown fences if present
+    const cleaned = content.replace(/^```(?:json)?\s*/, "").replace(/\s*```$/, "").trim();
+    const parsed = JSON.parse(cleaned);
+    if (!parsed.grade || !parsed.feedback || !VALID_GRADES.has(parsed.grade)) {
+      console.error("LLM grading invalid structure:", parsed);
+      return { grade: "?", feedback: "Grading temporarily unavailable." };
+    }
+    return { grade: parsed.grade, feedback: parsed.feedback };
   } catch {
     console.error("LLM grading JSON parse failed:", content);
     return { grade: "?", feedback: "Grading temporarily unavailable." };
