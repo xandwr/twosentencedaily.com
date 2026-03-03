@@ -57,15 +57,10 @@
 	<PageHeader title="Today" subtitle="Today's leaderboard. How does yours stack up?" />
 	<!-- Prompt -->
 	<div class="text-center space-y-3">
-		<div class="text-lg flex gap-2 justify-center items-center">
-			<div class="flex gap-2">
-				<p>on</p>
-				<p class="text-lg font-medium text-neutral-500">{prompt.date}</p>
-				<p>we're writing</p>
-			</div>
-
-			<span class="font-semibold">{prompt.type}</span> stories about:
-		</div>
+		<p class="text-lg">
+			on <span class="font-medium text-neutral-500">{prompt.date}</span> we're
+			writing <span class="font-semibold">{prompt.type}</span> stories about:
+		</p>
 		<KeywordBubbles keywords={prompt.keywords} />
 	</div>
 

@@ -15,6 +15,7 @@
 	let editing = $state(false);
 	let usernameInput = $state("");
 	let usernameError = $state("");
+	let mobileMenuOpen = $state(false);
 
 	function startEditing() {
 		usernameInput = getUsername() ?? "";
@@ -35,6 +36,12 @@
 		editing = false;
 		usernameError = "";
 	}
+
+	// Close mobile menu on navigation
+	$effect(() => {
+		page.url.pathname;
+		mobileMenuOpen = false;
+	});
 
 	const navItems = [
 		{ href: "/", label: "Play" },
@@ -59,8 +66,8 @@
 
 <div class="min-h-screen bg-white flex flex-col">
 	<header class="border-b border-gray-200">
-		<div class="max-w-2xl mx-auto px-4 pt-6 pb-4">
-			<a href="/" class="block text-center">
+		<div class="max-w-2xl mx-auto px-4 pt-6 pb-4 relative">
+			<a href="/" class="block text-left md:text-center">
 				<p class="text-[10px] uppercase tracking-[0.3em] text-gray-400">
 					The
 				</p>
@@ -68,9 +75,28 @@
 					Two-Sentence Daily
 				</h1>
 			</a>
+			<!-- Mobile hamburger -->
+			<button
+				class="absolute right-4 top-1/2 -translate-y-1/2 md:hidden p-2 text-gray-400 hover:text-gray-600"
+				onclick={() => (mobileMenuOpen = !mobileMenuOpen)}
+				aria-label="Toggle menu"
+			>
+				<div class="relative w-5 h-5">
+					<svg class="absolute inset-0 transition-all duration-200 {mobileMenuOpen ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="4" y1="6" x2="20" y2="6" />
+						<line x1="4" y1="12" x2="20" y2="12" />
+						<line x1="4" y1="18" x2="20" y2="18" />
+					</svg>
+					<svg class="absolute inset-0 transition-all duration-200 {mobileMenuOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="6" y1="6" x2="18" y2="18" />
+						<line x1="6" y1="18" x2="18" y2="6" />
+					</svg>
+				</div>
+			</button>
 		</div>
 
-		<nav class="max-w-2xl mx-auto flex border-t border-gray-100">
+		<!-- Desktop nav -->
+		<nav class="max-w-2xl mx-auto hidden md:flex border-t border-gray-100">
 			{#each navItems as { href, label }}
 				<a
 					class="flex-1 text-center py-2.5 text-sm font-medium transition-colors {page
@@ -82,6 +108,25 @@
 					{label}
 				</a>
 			{/each}
+		</nav>
+
+		<!-- Mobile nav dropdown -->
+		<nav
+			class="md:hidden border-t border-gray-100 grid transition-[grid-template-rows] duration-200 {mobileMenuOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}"
+		>
+			<div class="overflow-hidden">
+				{#each navItems as { href, label }}
+					<a
+						class="block px-6 py-3 text-sm font-medium transition-colors {page
+							.url.pathname === href
+							? 'text-black bg-gray-50'
+							: 'text-gray-400 hover:text-gray-600 hover:bg-gray-50'}"
+						{href}
+					>
+						{label}
+					</a>
+				{/each}
+			</div>
 		</nav>
 	</header>
 
