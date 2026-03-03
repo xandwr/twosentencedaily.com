@@ -84,37 +84,25 @@
 		error = "";
 
 		try {
-			const session = (await supabase.auth.getSession()).data.session;
-			if (!session) {
-				error = "Session expired. Please sign in again.";
-				submitting = false;
-				return;
-			}
-
-			const res = await fetch(
-				`${import.meta.env.VITE_SUPABASE_URL || "https://eqaseqbtrbmskbfmtjpj.supabase.co"}/functions/v1/submit`,
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization: `Bearer ${session.access_token}`,
-					},
-					body: JSON.stringify({
-						date: prompt.date,
-						sentence1: sentence1.trim(),
-						sentence2: sentence2.trim(),
-					}),
+			const { data, error: fnError } = await supabase.functions.invoke("submit", {
+				body: {
+					date: prompt.date,
+					sentence1: sentence1.trim(),
+					sentence2: sentence2.trim(),
 				},
-			);
+			});
 
-			const data = await res.json();
-
-			if (!res.ok) {
-				if (res.status === 409) {
+			if (fnError) {
+				// Try to parse error body
+				const errBody = typeof fnError === "object" && "context" in fnError
+					? fnError.context
+					: fnError;
+				const msg = data?.error || fnError.message || "Submission failed. Try again.";
+				if (msg.includes("Already submitted")) {
 					error = "You already submitted today!";
 					submitted = true;
 				} else {
-					error = data.error || "Submission failed. Try again.";
+					error = msg;
 				}
 			} else {
 				submitted = true;
