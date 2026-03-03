@@ -192,7 +192,9 @@ Evaluate:
 - **Structure**: The two-sentence constraint is the game. Did they use it — setup/payoff, tension/release, misdirection/reveal?
 - **Economy**: Every word costs precious characters. No filler, no wasted motion.
 
-Be honest but not cruel. This is a game people play for fun.`;
+Be honest but not cruel. This is a game people play for fun.
+
+IMPORTANT: Your response budget is ~600 tokens. Keep feedback concise — aim for 3-5 short sentences total across all categories. Do NOT write paragraph-length analysis for each criterion. Hit the key insight for each and move on. If you feel yourself running long, wrap up immediately with your most important remaining point.`;
 
 const GRADING_SCHEMA = {
   type: "json_schema" as const,
@@ -251,7 +253,11 @@ async function gradeSubmission(
   }
 
   const json = await res.json();
-  const content = json.choices?.[0]?.message?.content;
+  const choice = json.choices?.[0];
+  const content = choice?.message?.content;
+  if (choice?.finish_reason === "length") {
+    console.warn("LLM grading was truncated (hit max_tokens)");
+  }
   if (!content) {
     console.error("LLM grading returned no content:", JSON.stringify(json));
     return { grade: "?", feedback: "Grading temporarily unavailable." };

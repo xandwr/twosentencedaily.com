@@ -2,6 +2,7 @@
 	import { supabase } from "$lib/supabaseClient";
 	import { getDailyPrompt } from "$lib/promptGenerator";
 	import { getUser, signIn } from "$lib/auth.svelte";
+	import { renderFeedback } from "$lib/renderFeedback";
 	const prompt = getDailyPrompt();
 
 	let sentence1 = $state("");
@@ -134,7 +135,7 @@
 				<p class="text-2xl font-semibold">Submitted</p>
 			{/if}
 			{#if feedback}
-				<div class="text-left text-sm text-gray-600 leading-relaxed bg-gray-50 rounded-lg p-4 whitespace-pre-wrap">{feedback}</div>
+				<div class="text-left text-sm text-gray-600 leading-relaxed bg-gray-50 rounded-lg p-4 whitespace-pre-wrap">{@html renderFeedback(feedback)}</div>
 			{/if}
 			<button
 				onclick={share}
