@@ -178,6 +178,93 @@ async function embed(texts: string[]): Promise<number[][]> {
   return sorted.map((d: any) => d.embedding);
 }
 
+// --- LLM Grading ---
+
+const GRADING_SYSTEM_PROMPT = `You are the judge for Two Sentence Daily — a creative writing game where players craft a two-sentence story (max 150 characters per sentence) from a story type and three keywords.
+
+The keywords are thematic anchors, not vocabulary requirements. A story that never uses the word "betrays" but makes you FEEL betrayal is better than one that shoehorns it in. Reward subtlety and nuance over literal keyword stuffing.
+
+The submission has already been scored on semantic alignment with the keywords (provided as xMult — higher means the embedding is closer to the keyword subspace). Factor this into your assessment, but weight craft and creativity equally.
+
+Evaluate:
+- **Thematic resonance**: Do the keywords live in the story as feelings, images, or tensions — not just vocabulary?
+- **Genre craft**: Does it genuinely evoke the target type? Horror should unsettle, comedy should land, grief should ache.
+- **Structure**: The two-sentence constraint is the game. Did they use it — setup/payoff, tension/release, misdirection/reveal?
+- **Economy**: Every word costs precious characters. No filler, no wasted motion.
+
+Be honest but not cruel. This is a game people play for fun.`;
+
+const GRADING_SCHEMA = {
+  type: "json_schema" as const,
+  json_schema: {
+    name: "judgment",
+    strict: true,
+    schema: {
+      type: "object",
+      properties: {
+        grade: {
+          type: "string",
+          enum: ["A+","A","A-","B+","B","B-","C+","C","C-","D+","D","D-","F"],
+        },
+        feedback: {
+          type: "string",
+          description: "Detailed feedback covering thematic resonance, genre craft, structure, and economy",
+        },
+      },
+      required: ["grade", "feedback"],
+      additionalProperties: false,
+    },
+  },
+};
+
+async function gradeSubmission(
+  type: string,
+  keywords: string[],
+  xMult: number,
+  sentence1: string,
+  sentence2: string,
+): Promise<{ grade: string; feedback: string }> {
+  const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${OPENROUTER_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "openai/gpt-oss-120b",
+      messages: [
+        { role: "system", content: GRADING_SYSTEM_PROMPT },
+        {
+          role: "user",
+          content: `Type: ${type}\nKeywords: ${keywords.join(", ")}\nxMult: ${xMult.toFixed(2)}\n\nSubmission:\n${sentence1}\n${sentence2}\n\nJudge this submission.`,
+        },
+      ],
+      response_format: GRADING_SCHEMA,
+      max_tokens: 800,
+    }),
+  });
+
+  if (!res.ok) {
+    const body = await res.text();
+    console.error(`LLM grading failed (${res.status}): ${body}`);
+    return { grade: "?", feedback: "Grading temporarily unavailable." };
+  }
+
+  const json = await res.json();
+  const content = json.choices?.[0]?.message?.content;
+  if (!content) {
+    console.error("LLM grading returned no content:", JSON.stringify(json));
+    return { grade: "?", feedback: "Grading temporarily unavailable." };
+  }
+
+  try {
+    return JSON.parse(content);
+  } catch {
+    console.error("LLM grading JSON parse failed:", content);
+    return { grade: "?", feedback: "Grading temporarily unavailable." };
+  }
+}
+
 // --- Scoring ---
 
 function computeScore(
@@ -348,7 +435,16 @@ Deno.serve(async (req) => {
     const baseline = Math.sqrt(2 / dim);
     const multiplier = score / baseline;
 
-    // Insert submission with multiplier as score
+    // LLM grading
+    const { grade, feedback } = await gradeSubmission(
+      prompt.type,
+      prompt.keywords,
+      multiplier,
+      sentence1.trim(),
+      sentence2.trim(),
+    );
+
+    // Insert submission with multiplier as score and LLM grade
     const { error: insertError } = await supabaseAdmin
       .from("submissions")
       .insert({
@@ -357,6 +453,8 @@ Deno.serve(async (req) => {
         sentence1: sentence1.trim(),
         sentence2: sentence2.trim(),
         score: multiplier,
+        llm_grade: grade,
+        llm_feedback: feedback,
       });
 
     if (insertError) {
@@ -381,7 +479,7 @@ Deno.serve(async (req) => {
       );
     }
 
-    return jsonResponse({ score, multiplier, date: prompt.date });
+    return jsonResponse({ score, multiplier, grade, feedback, date: prompt.date });
   } catch (err) {
     console.error("Submit error:", err);
     return jsonResponse(

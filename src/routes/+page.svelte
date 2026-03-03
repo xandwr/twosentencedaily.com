@@ -21,35 +21,32 @@
 		if (!user) return;
 		const { data } = await supabase
 			.from("submissions")
-			.select("id, score")
+			.select("id, score, llm_grade, llm_feedback")
 			.eq("user_id", user.id)
 			.eq("prompt_date", prompt.date)
 			.maybeSingle();
 		if (data) {
 			submitted = true;
 			multiplier = data.score;
+			grade = data.llm_grade;
+			feedback = data.llm_feedback;
 		}
 		checked = true;
 	}
 
 	let score = $state<number | null>(null);
 	let multiplier = $state<number | null>(null);
+	let grade = $state<string | null>(null);
+	let feedback = $state<string | null>(null);
 	let shared = $state(false);
 
-	function shareText(mult: number): string {
-		const clamped = Math.min(Math.max(mult, 0), 10);
-		const full = Math.floor(clamped);
-		const frac = clamped - full;
-		const partial = frac >= 0.5 ? 1 : frac > 0 ? 1 : 0;
-		const filled = "█".repeat(full);
-		const mid = partial ? "▒" : "";
-		const empty = "░".repeat(10 - full - partial);
-		return `The Two-Sentence Daily | ${mult.toFixed(1)}x\n${filled}${mid}${empty}\ntwosentencedaily.com`;
+	function shareText(g: string): string {
+		return `The Two-Sentence Daily | ${g}\ntwosentencedaily.com`;
 	}
 
 	async function share() {
-		if (multiplier === null) return;
-		await navigator.clipboard.writeText(shareText(multiplier));
+		if (!grade) return;
+		await navigator.clipboard.writeText(shareText(grade));
 		shared = true;
 		setTimeout(() => (shared = false), 2000);
 	}
@@ -84,6 +81,8 @@
 				submitted = true;
 				score = data.score;
 				multiplier = data.multiplier;
+				grade = data.grade;
+				feedback = data.feedback;
 			}
 		} catch (e) {
 			error = "Network error. Try again.";
@@ -128,23 +127,21 @@
 			<p class="text-gray-400 text-sm">Loading...</p>
 		</div>
 	{:else if submitted}
-		<div class="w-full text-center py-12 space-y-3">
-			<p class="text-2xl font-semibold">Submitted</p>
-			{#if multiplier !== null}
-				{@const clamped = Math.min(Math.max(multiplier, 0), 10)}
-				{@const full = Math.floor(clamped)}
-				{@const frac = clamped - full}
-				{@const partial = frac >= 0.5 ? 1 : frac > 0 ? 1 : 0}
-				<p class="text-lg font-mono">{multiplier.toFixed(1)}x</p>
-				<p class="text-2xl font-mono tracking-widest">{"█".repeat(full)}{"▒".repeat(partial)}{"░".repeat(10 - full - partial)}</p>
-				<p class="text-gray-400 text-sm">above random</p>
-				<button
-					onclick={share}
-					class="mt-4 px-6 py-2 border border-gray-200 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors"
-				>
-					{shared ? "Copied!" : "Share"}
-				</button>
+		<div class="w-full text-center py-12 space-y-4">
+			{#if grade}
+				<p class="text-5xl font-bold">{grade}</p>
+			{:else}
+				<p class="text-2xl font-semibold">Submitted</p>
 			{/if}
+			{#if feedback}
+				<div class="text-left text-sm text-gray-600 leading-relaxed bg-gray-50 rounded-lg p-4 whitespace-pre-wrap">{feedback}</div>
+			{/if}
+			<button
+				onclick={share}
+				class="mt-2 px-6 py-2 border border-gray-200 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors"
+			>
+				{shared ? "Copied!" : "Share"}
+			</button>
 			<p class="text-gray-400 text-sm">
 				Come back tomorrow for a new prompt.
 			</p>
