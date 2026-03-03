@@ -1,0 +1,10 @@
+{
+	"python.analysis.exclude": ["scripts/**", "**/node_modules", "**/__pycache__", "**/.*"],
+	"python.defaultInterpreterPath": "",
+	"search.exclude": {
+		"scripts/.venv": true
+	},
+	"files.exclude": {
+		"scripts/.venv": true
+	}
+}

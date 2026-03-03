@@ -1,0 +1,3002 @@
+[
+  {
+    "word": "abjectness",
+    "nearest_type": "horror",
+    "distance": 0.5438
+  },
+  {
+    "word": "absence",
+    "nearest_type": "mystery",
+    "distance": 0.5384
+  },
+  {
+    "word": "abused",
+    "nearest_type": "revenge",
+    "distance": 0.5463
+  },
+  {
+    "word": "acrimony",
+    "nearest_type": "revenge",
+    "distance": 0.5552
+  },
+  {
+    "word": "actresses",
+    "nearest_type": "comedy",
+    "distance": 0.5642
+  },
+  {
+    "word": "admits",
+    "nearest_type": "regret",
+    "distance": 0.5498
+  },
+  {
+    "word": "adversity",
+    "nearest_type": "grief",
+    "distance": 0.5517
+  },
+  {
+    "word": "affability",
+    "nearest_type": "love",
+    "distance": 0.5428
+  },
+  {
+    "word": "afterthought",
+    "nearest_type": "regret",
+    "distance": 0.5371
+  },
+  {
+    "word": "aliveness",
+    "nearest_type": "grief",
+    "distance": 0.5461
+  },
+  {
+    "word": "altruism",
+    "nearest_type": "love",
+    "distance": 0.5592
+  },
+  {
+    "word": "amazes",
+    "nearest_type": "wonder",
+    "distance": 0.581
+  },
+  {
+    "word": "ambushing",
+    "nearest_type": "revenge",
+    "distance": 0.5496
+  },
+  {
+    "word": "amends",
+    "nearest_type": "regret",
+    "distance": 0.5479
+  },
+  {
+    "word": "amorously",
+    "nearest_type": "love",
+    "distance": 0.5409
+  },
+  {
+    "word": "amour",
+    "nearest_type": "love",
+    "distance": 0.5464
+  },
+  {
+    "word": "amuse",
+    "nearest_type": "comedy",
+    "distance": 0.5554
+  },
+  {
+    "word": "amusing",
+    "nearest_type": "comedy",
+    "distance": 0.5418
+  },
+  {
+    "word": "androgyny",
+    "nearest_type": "comedy",
+    "distance": 0.5469
+  },
+  {
+    "word": "anomalies",
+    "nearest_type": "mystery",
+    "distance": 0.5577
+  },
+  {
+    "word": "anomalous",
+    "nearest_type": "mystery",
+    "distance": 0.565
+  },
+  {
+    "word": "anonymous",
+    "nearest_type": "mystery",
+    "distance": 0.5523
+  },
+  {
+    "word": "artistry",
+    "nearest_type": "comedy",
+    "distance": 0.564
+  },
+  {
+    "word": "artwork",
+    "nearest_type": "comedy",
+    "distance": 0.5416
+  },
+  {
+    "word": "ask",
+    "nearest_type": "wonder",
+    "distance": 0.5566
+  },
+  {
+    "word": "askance",
+    "nearest_type": "wonder",
+    "distance": 0.5904
+  },
+  {
+    "word": "asking",
+    "nearest_type": "wonder",
+    "distance": 0.5195
+  },
+  {
+    "word": "astonishing",
+    "nearest_type": "wonder",
+    "distance": 0.5821
+  },
+  {
+    "word": "astounded",
+    "nearest_type": "wonder",
+    "distance": 0.5795
+  },
+  {
+    "word": "atones",
+    "nearest_type": "regret",
+    "distance": 0.5546
+  },
+  {
+    "word": "attack",
+    "nearest_type": "revenge",
+    "distance": 0.5447
+  },
+  {
+    "word": "attacked",
+    "nearest_type": "revenge",
+    "distance": 0.5503
+  },
+  {
+    "word": "audiences",
+    "nearest_type": "comedy",
+    "distance": 0.5484
+  },
+  {
+    "word": "autism",
+    "nearest_type": "comedy",
+    "distance": 0.5658
+  },
+  {
+    "word": "autopsies",
+    "nearest_type": "grief",
+    "distance": 0.5467
+  },
+  {
+    "word": "awakening",
+    "nearest_type": "horror",
+    "distance": 0.5476
+  },
+  {
+    "word": "awestruck",
+    "nearest_type": "wonder",
+    "distance": 0.5828
+  },
+  {
+    "word": "awfulness",
+    "nearest_type": "horror",
+    "distance": 0.5544
+  },
+  {
+    "word": "backlashes",
+    "nearest_type": "revenge",
+    "distance": 0.549
+  },
+  {
+    "word": "banality",
+    "nearest_type": "comedy",
+    "distance": 0.5384
+  },
+  {
+    "word": "battering",
+    "nearest_type": "revenge",
+    "distance": 0.5475
+  },
+  {
+    "word": "bawls",
+    "nearest_type": "grief",
+    "distance": 0.5513
+  },
+  {
+    "word": "befuddled",
+    "nearest_type": "wonder",
+    "distance": 0.5756
+  },
+  {
+    "word": "befuddlement",
+    "nearest_type": "wonder",
+    "distance": 0.5877
+  },
+  {
+    "word": "begrudges",
+    "nearest_type": "regret",
+    "distance": 0.5377
+  },
+  {
+    "word": "behave",
+    "nearest_type": "revenge",
+    "distance": 0.5511
+  },
+  {
+    "word": "behaved",
+    "nearest_type": "revenge",
+    "distance": 0.5535
+  },
+  {
+    "word": "beheading",
+    "nearest_type": "revenge",
+    "distance": 0.5527
+  },
+  {
+    "word": "bemusement",
+    "nearest_type": "wonder",
+    "distance": 0.5726
+  },
+  {
+    "word": "bemuses",
+    "nearest_type": "wonder",
+    "distance": 0.5666
+  },
+  {
+    "word": "benevolence",
+    "nearest_type": "revenge",
+    "distance": 0.5439
+  },
+  {
+    "word": "berating",
+    "nearest_type": "revenge",
+    "distance": 0.5501
+  },
+  {
+    "word": "betrays",
+    "nearest_type": "revenge",
+    "distance": 0.5542
+  },
+  {
+    "word": "bewildering",
+    "nearest_type": "wonder",
+    "distance": 0.5108
+  },
+  {
+    "word": "bewilderment",
+    "nearest_type": "wonder",
+    "distance": 0.5188
+  },
+  {
+    "word": "biopics",
+    "nearest_type": "comedy",
+    "distance": 0.5409
+  },
+  {
+    "word": "bitterly",
+    "nearest_type": "grief",
+    "distance": 0.5509
+  },
+  {
+    "word": "blame",
+    "nearest_type": "regret",
+    "distance": 0.551
+  },
+  {
+    "word": "blamed",
+    "nearest_type": "regret",
+    "distance": 0.5556
+  },
+  {
+    "word": "blankly",
+    "nearest_type": "wonder",
+    "distance": 0.5732
+  },
+  {
+    "word": "bliss",
+    "nearest_type": "love",
+    "distance": 0.5518
+  },
+  {
+    "word": "blissfulness",
+    "nearest_type": "love",
+    "distance": 0.5499
+  },
+  {
+    "word": "bloodiest",
+    "nearest_type": "horror",
+    "distance": 0.5525
+  },
+  {
+    "word": "bloodthirsty",
+    "nearest_type": "horror",
+    "distance": 0.5561
+  },
+  {
+    "word": "blowjob",
+    "nearest_type": "love",
+    "distance": 0.5411
+  },
+  {
+    "word": "blowjobs",
+    "nearest_type": "love",
+    "distance": 0.5436
+  },
+  {
+    "word": "blunder",
+    "nearest_type": "regret",
+    "distance": 0.5447
+  },
+  {
+    "word": "boggled",
+    "nearest_type": "wonder",
+    "distance": 0.5621
+  },
+  {
+    "word": "boggles",
+    "nearest_type": "wonder",
+    "distance": 0.5484
+  },
+  {
+    "word": "boggling",
+    "nearest_type": "wonder",
+    "distance": 0.5268
+  },
+  {
+    "word": "brooding",
+    "nearest_type": "grief",
+    "distance": 0.5524
+  },
+  {
+    "word": "bug",
+    "nearest_type": "mystery",
+    "distance": 0.5366
+  },
+  {
+    "word": "burden",
+    "nearest_type": "grief",
+    "distance": 0.554
+  },
+  {
+    "word": "burdened",
+    "nearest_type": "grief",
+    "distance": 0.5504
+  },
+  {
+    "word": "burying",
+    "nearest_type": "grief",
+    "distance": 0.5506
+  },
+  {
+    "word": "caressing",
+    "nearest_type": "love",
+    "distance": 0.5495
+  },
+  {
+    "word": "caricatures",
+    "nearest_type": "comedy",
+    "distance": 0.5545
+  },
+  {
+    "word": "caring",
+    "nearest_type": "love",
+    "distance": 0.5434
+  },
+  {
+    "word": "carnality",
+    "nearest_type": "love",
+    "distance": 0.5414
+  },
+  {
+    "word": "casualties",
+    "nearest_type": "grief",
+    "distance": 0.5511
+  },
+  {
+    "word": "character",
+    "nearest_type": "comedy",
+    "distance": 0.5567
+  },
+  {
+    "word": "chastise",
+    "nearest_type": "revenge",
+    "distance": 0.5463
+  },
+  {
+    "word": "cherished",
+    "nearest_type": "love",
+    "distance": 0.5455
+  },
+  {
+    "word": "childbirths",
+    "nearest_type": "grief",
+    "distance": 0.5506
+  },
+  {
+    "word": "chuckled",
+    "nearest_type": "comedy",
+    "distance": 0.5659
+  },
+  {
+    "word": "circumstance",
+    "nearest_type": "grief",
+    "distance": 0.5509
+  },
+  {
+    "word": "civvies",
+    "nearest_type": "comedy",
+    "distance": 0.5645
+  },
+  {
+    "word": "clownishness",
+    "nearest_type": "horror",
+    "distance": 0.5451
+  },
+  {
+    "word": "clueless",
+    "nearest_type": "mystery",
+    "distance": 0.5523
+  },
+  {
+    "word": "comedienne",
+    "nearest_type": "comedy",
+    "distance": 0.5477
+  },
+  {
+    "word": "compensated",
+    "nearest_type": "revenge",
+    "distance": 0.5553
+  },
+  {
+    "word": "compulsion",
+    "nearest_type": "regret",
+    "distance": 0.5614
+  },
+  {
+    "word": "condemnation",
+    "nearest_type": "grief",
+    "distance": 0.5513
+  },
+  {
+    "word": "confess",
+    "nearest_type": "regret",
+    "distance": 0.5366
+  },
+  {
+    "word": "confounded",
+    "nearest_type": "wonder",
+    "distance": 0.5275
+  },
+  {
+    "word": "confusedly",
+    "nearest_type": "wonder",
+    "distance": 0.5351
+  },
+  {
+    "word": "confuser",
+    "nearest_type": "mystery",
+    "distance": 0.5399
+  },
+  {
+    "word": "confusing",
+    "nearest_type": "mystery",
+    "distance": 0.5368
+  },
+  {
+    "word": "conjuring",
+    "nearest_type": "horror",
+    "distance": 0.5526
+  },
+  {
+    "word": "conscience",
+    "nearest_type": "regret",
+    "distance": 0.541
+  },
+  {
+    "word": "consoling",
+    "nearest_type": "grief",
+    "distance": 0.5485
+  },
+  {
+    "word": "conspiracy",
+    "nearest_type": "mystery",
+    "distance": 0.5387
+  },
+  {
+    "word": "contemning",
+    "nearest_type": "wonder",
+    "distance": 0.5877
+  },
+  {
+    "word": "contemplate",
+    "nearest_type": "wonder",
+    "distance": 0.584
+  },
+  {
+    "word": "contemplated",
+    "nearest_type": "wonder",
+    "distance": 0.5592
+  },
+  {
+    "word": "contemplates",
+    "nearest_type": "wonder",
+    "distance": 0.5766
+  },
+  {
+    "word": "conundrums",
+    "nearest_type": "mystery",
+    "distance": 0.5679
+  },
+  {
+    "word": "convicting",
+    "nearest_type": "revenge",
+    "distance": 0.5442
+  },
+  {
+    "word": "cordiality",
+    "nearest_type": "love",
+    "distance": 0.5567
+  },
+  {
+    "word": "courtesies",
+    "nearest_type": "revenge",
+    "distance": 0.5521
+  },
+  {
+    "word": "coven",
+    "nearest_type": "horror",
+    "distance": 0.5468
+  },
+  {
+    "word": "craven",
+    "nearest_type": "horror",
+    "distance": 0.556
+  },
+  {
+    "word": "creation",
+    "nearest_type": "love",
+    "distance": 0.546
+  },
+  {
+    "word": "creep",
+    "nearest_type": "horror",
+    "distance": 0.5515
+  },
+  {
+    "word": "creepers",
+    "nearest_type": "horror",
+    "distance": 0.5429
+  },
+  {
+    "word": "cudgeling",
+    "nearest_type": "revenge",
+    "distance": 0.5501
+  },
+  {
+    "word": "curiosities",
+    "nearest_type": "mystery",
+    "distance": 0.5673
+  },
+  {
+    "word": "curiousness",
+    "nearest_type": "wonder",
+    "distance": 0.534
+  },
+  {
+    "word": "curses",
+    "nearest_type": "revenge",
+    "distance": 0.5535
+  },
+  {
+    "word": "deadening",
+    "nearest_type": "grief",
+    "distance": 0.5463
+  },
+  {
+    "word": "deadheading",
+    "nearest_type": "grief",
+    "distance": 0.5522
+  },
+  {
+    "word": "dejectedly",
+    "nearest_type": "grief",
+    "distance": 0.5457
+  },
+  {
+    "word": "deliberate",
+    "nearest_type": "regret",
+    "distance": 0.5586
+  },
+  {
+    "word": "deliberated",
+    "nearest_type": "regret",
+    "distance": 0.5488
+  },
+  {
+    "word": "demised",
+    "nearest_type": "grief",
+    "distance": 0.554
+  },
+  {
+    "word": "deplore",
+    "nearest_type": "regret",
+    "distance": 0.5351
+  },
+  {
+    "word": "depressions",
+    "nearest_type": "grief",
+    "distance": 0.5531
+  },
+  {
+    "word": "derisiveness",
+    "nearest_type": "comedy",
+    "distance": 0.5642
+  },
+  {
+    "word": "descries",
+    "nearest_type": "regret",
+    "distance": 0.5564
+  },
+  {
+    "word": "descry",
+    "nearest_type": "regret",
+    "distance": 0.5497
+  },
+  {
+    "word": "desecrate",
+    "nearest_type": "revenge",
+    "distance": 0.5531
+  },
+  {
+    "word": "desires",
+    "nearest_type": "regret",
+    "distance": 0.5435
+  },
+  {
+    "word": "despaired",
+    "nearest_type": "grief",
+    "distance": 0.5502
+  },
+  {
+    "word": "despondently",
+    "nearest_type": "grief",
+    "distance": 0.5459
+  },
+  {
+    "word": "destinies",
+    "nearest_type": "regret",
+    "distance": 0.5513
+  },
+  {
+    "word": "destroying",
+    "nearest_type": "revenge",
+    "distance": 0.5561
+  },
+  {
+    "word": "detective",
+    "nearest_type": "mystery",
+    "distance": 0.5317
+  },
+  {
+    "word": "detectives",
+    "nearest_type": "mystery",
+    "distance": 0.554
+  },
+  {
+    "word": "dethronement",
+    "nearest_type": "revenge",
+    "distance": 0.5461
+  },
+  {
+    "word": "devils",
+    "nearest_type": "revenge",
+    "distance": 0.551
+  },
+  {
+    "word": "devoted",
+    "nearest_type": "love",
+    "distance": 0.5502
+  },
+  {
+    "word": "dialogues",
+    "nearest_type": "comedy",
+    "distance": 0.5542
+  },
+  {
+    "word": "diffidence",
+    "nearest_type": "grief",
+    "distance": 0.547
+  },
+  {
+    "word": "dignity",
+    "nearest_type": "revenge",
+    "distance": 0.5472
+  },
+  {
+    "word": "dilemma",
+    "nearest_type": "regret",
+    "distance": 0.5516
+  },
+  {
+    "word": "disappeared",
+    "nearest_type": "mystery",
+    "distance": 0.5684
+  },
+  {
+    "word": "disappearing",
+    "nearest_type": "mystery",
+    "distance": 0.5453
+  },
+  {
+    "word": "disappears",
+    "nearest_type": "mystery",
+    "distance": 0.5658
+  },
+  {
+    "word": "disbelief",
+    "nearest_type": "wonder",
+    "distance": 0.5704
+  },
+  {
+    "word": "discover",
+    "nearest_type": "mystery",
+    "distance": 0.5671
+  },
+  {
+    "word": "disguised",
+    "nearest_type": "mystery",
+    "distance": 0.5672
+  },
+  {
+    "word": "dishonoring",
+    "nearest_type": "horror",
+    "distance": 0.5517
+  },
+  {
+    "word": "dislike",
+    "nearest_type": "love",
+    "distance": 0.5584
+  },
+  {
+    "word": "disowning",
+    "nearest_type": "grief",
+    "distance": 0.5531
+  },
+  {
+    "word": "disrespect",
+    "nearest_type": "revenge",
+    "distance": 0.551
+  },
+  {
+    "word": "distressful",
+    "nearest_type": "grief",
+    "distance": 0.5495
+  },
+  {
+    "word": "distrust",
+    "nearest_type": "love",
+    "distance": 0.5455
+  },
+  {
+    "word": "disturbed",
+    "nearest_type": "horror",
+    "distance": 0.5533
+  },
+  {
+    "word": "docudrama",
+    "nearest_type": "comedy",
+    "distance": 0.5422
+  },
+  {
+    "word": "docudramas",
+    "nearest_type": "comedy",
+    "distance": 0.5595
+  },
+  {
+    "word": "doubted",
+    "nearest_type": "wonder",
+    "distance": 0.5675
+  },
+  {
+    "word": "dramatist",
+    "nearest_type": "comedy",
+    "distance": 0.5613
+  },
+  {
+    "word": "dramatists",
+    "nearest_type": "comedy",
+    "distance": 0.5432
+  },
+  {
+    "word": "dramatizing",
+    "nearest_type": "comedy",
+    "distance": 0.549
+  },
+  {
+    "word": "drowning",
+    "nearest_type": "grief",
+    "distance": 0.5544
+  },
+  {
+    "word": "dumbfounded",
+    "nearest_type": "wonder",
+    "distance": 0.5648
+  },
+  {
+    "word": "eeriness",
+    "nearest_type": "horror",
+    "distance": 0.5501
+  },
+  {
+    "word": "ejaculation",
+    "nearest_type": "love",
+    "distance": 0.5524
+  },
+  {
+    "word": "elusive",
+    "nearest_type": "mystery",
+    "distance": 0.5627
+  },
+  {
+    "word": "embalms",
+    "nearest_type": "grief",
+    "distance": 0.5496
+  },
+  {
+    "word": "enamored",
+    "nearest_type": "love",
+    "distance": 0.5474
+  },
+  {
+    "word": "endearment",
+    "nearest_type": "love",
+    "distance": 0.5564
+  },
+  {
+    "word": "endearments",
+    "nearest_type": "love",
+    "distance": 0.5494
+  },
+  {
+    "word": "engulfment",
+    "nearest_type": "horror",
+    "distance": 0.5532
+  },
+  {
+    "word": "entertained",
+    "nearest_type": "comedy",
+    "distance": 0.5522
+  },
+  {
+    "word": "entitlement",
+    "nearest_type": "revenge",
+    "distance": 0.5533
+  },
+  {
+    "word": "entomology",
+    "nearest_type": "horror",
+    "distance": 0.5434
+  },
+  {
+    "word": "enviousness",
+    "nearest_type": "regret",
+    "distance": 0.5575
+  },
+  {
+    "word": "erasure",
+    "nearest_type": "regret",
+    "distance": 0.5494
+  },
+  {
+    "word": "esoteric",
+    "nearest_type": "mystery",
+    "distance": 0.5621
+  },
+  {
+    "word": "ethological",
+    "nearest_type": "horror",
+    "distance": 0.5564
+  },
+  {
+    "word": "ethology",
+    "nearest_type": "comedy",
+    "distance": 0.535
+  },
+  {
+    "word": "eulogized",
+    "nearest_type": "grief",
+    "distance": 0.5528
+  },
+  {
+    "word": "euthanasia",
+    "nearest_type": "grief",
+    "distance": 0.5528
+  },
+  {
+    "word": "euthanizing",
+    "nearest_type": "grief",
+    "distance": 0.5514
+  },
+  {
+    "word": "evils",
+    "nearest_type": "horror",
+    "distance": 0.5518
+  },
+  {
+    "word": "excoriated",
+    "nearest_type": "revenge",
+    "distance": 0.546
+  },
+  {
+    "word": "executed",
+    "nearest_type": "revenge",
+    "distance": 0.5487
+  },
+  {
+    "word": "executions",
+    "nearest_type": "revenge",
+    "distance": 0.5446
+  },
+  {
+    "word": "exhumation",
+    "nearest_type": "horror",
+    "distance": 0.5556
+  },
+  {
+    "word": "exoneration",
+    "nearest_type": "revenge",
+    "distance": 0.5562
+  },
+  {
+    "word": "expiation",
+    "nearest_type": "revenge",
+    "distance": 0.5462
+  },
+  {
+    "word": "explanation",
+    "nearest_type": "mystery",
+    "distance": 0.553
+  },
+  {
+    "word": "explanations",
+    "nearest_type": "mystery",
+    "distance": 0.5345
+  },
+  {
+    "word": "exploitation",
+    "nearest_type": "revenge",
+    "distance": 0.5454
+  },
+  {
+    "word": "faddiness",
+    "nearest_type": "love",
+    "distance": 0.5535
+  },
+  {
+    "word": "fairness",
+    "nearest_type": "revenge",
+    "distance": 0.5455
+  },
+  {
+    "word": "familiarity",
+    "nearest_type": "regret",
+    "distance": 0.5503
+  },
+  {
+    "word": "farce",
+    "nearest_type": "comedy",
+    "distance": 0.5514
+  },
+  {
+    "word": "fascinated",
+    "nearest_type": "wonder",
+    "distance": 0.5158
+  },
+  {
+    "word": "fatalism",
+    "nearest_type": "grief",
+    "distance": 0.5467
+  },
+  {
+    "word": "fate",
+    "nearest_type": "grief",
+    "distance": 0.5527
+  },
+  {
+    "word": "fearfully",
+    "nearest_type": "horror",
+    "distance": 0.5499
+  },
+  {
+    "word": "fetish",
+    "nearest_type": "horror",
+    "distance": 0.5571
+  },
+  {
+    "word": "filmmakers",
+    "nearest_type": "comedy",
+    "distance": 0.5344
+  },
+  {
+    "word": "flashback",
+    "nearest_type": "regret",
+    "distance": 0.5571
+  },
+  {
+    "word": "flirt",
+    "nearest_type": "love",
+    "distance": 0.5519
+  },
+  {
+    "word": "flirtations",
+    "nearest_type": "love",
+    "distance": 0.5581
+  },
+  {
+    "word": "flowers",
+    "nearest_type": "love",
+    "distance": 0.5547
+  },
+  {
+    "word": "fondest",
+    "nearest_type": "love",
+    "distance": 0.5569
+  },
+  {
+    "word": "forget",
+    "nearest_type": "regret",
+    "distance": 0.5377
+  },
+  {
+    "word": "forgetfully",
+    "nearest_type": "regret",
+    "distance": 0.5405
+  },
+  {
+    "word": "forgettable",
+    "nearest_type": "regret",
+    "distance": 0.5373
+  },
+  {
+    "word": "forgetting",
+    "nearest_type": "regret",
+    "distance": 0.5361
+  },
+  {
+    "word": "forgiving",
+    "nearest_type": "revenge",
+    "distance": 0.5477
+  },
+  {
+    "word": "forgone",
+    "nearest_type": "regret",
+    "distance": 0.544
+  },
+  {
+    "word": "forgotten",
+    "nearest_type": "regret",
+    "distance": 0.5523
+  },
+  {
+    "word": "formaldehyde",
+    "nearest_type": "horror",
+    "distance": 0.5486
+  },
+  {
+    "word": "forsake",
+    "nearest_type": "regret",
+    "distance": 0.5504
+  },
+  {
+    "word": "forsaking",
+    "nearest_type": "regret",
+    "distance": 0.5393
+  },
+  {
+    "word": "friskiness",
+    "nearest_type": "love",
+    "distance": 0.5552
+  },
+  {
+    "word": "frowning",
+    "nearest_type": "grief",
+    "distance": 0.5534
+  },
+  {
+    "word": "fun",
+    "nearest_type": "comedy",
+    "distance": 0.542
+  },
+  {
+    "word": "funnyman",
+    "nearest_type": "comedy",
+    "distance": 0.5663
+  },
+  {
+    "word": "gaped",
+    "nearest_type": "wonder",
+    "distance": 0.5844
+  },
+  {
+    "word": "gayness",
+    "nearest_type": "comedy",
+    "distance": 0.5495
+  },
+  {
+    "word": "generousness",
+    "nearest_type": "love",
+    "distance": 0.5421
+  },
+  {
+    "word": "ghoulishly",
+    "nearest_type": "horror",
+    "distance": 0.5501
+  },
+  {
+    "word": "gift",
+    "nearest_type": "love",
+    "distance": 0.552
+  },
+  {
+    "word": "gifts",
+    "nearest_type": "love",
+    "distance": 0.5418
+  },
+  {
+    "word": "giggle",
+    "nearest_type": "comedy",
+    "distance": 0.5613
+  },
+  {
+    "word": "giggles",
+    "nearest_type": "comedy",
+    "distance": 0.5633
+  },
+  {
+    "word": "girlfriend",
+    "nearest_type": "love",
+    "distance": 0.554
+  },
+  {
+    "word": "girlfriends",
+    "nearest_type": "love",
+    "distance": 0.5402
+  },
+  {
+    "word": "giving",
+    "nearest_type": "love",
+    "distance": 0.5599
+  },
+  {
+    "word": "gladness",
+    "nearest_type": "love",
+    "distance": 0.5544
+  },
+  {
+    "word": "glances",
+    "nearest_type": "wonder",
+    "distance": 0.5941
+  },
+  {
+    "word": "glee",
+    "nearest_type": "comedy",
+    "distance": 0.5555
+  },
+  {
+    "word": "gloating",
+    "nearest_type": "grief",
+    "distance": 0.5493
+  },
+  {
+    "word": "glum",
+    "nearest_type": "grief",
+    "distance": 0.5499
+  },
+  {
+    "word": "god",
+    "nearest_type": "grief",
+    "distance": 0.5494
+  },
+  {
+    "word": "godliness",
+    "nearest_type": "love",
+    "distance": 0.5444
+  },
+  {
+    "word": "grandiosity",
+    "nearest_type": "love",
+    "distance": 0.5529
+  },
+  {
+    "word": "graved",
+    "nearest_type": "grief",
+    "distance": 0.5541
+  },
+  {
+    "word": "gravest",
+    "nearest_type": "grief",
+    "distance": 0.5463
+  },
+  {
+    "word": "greed",
+    "nearest_type": "revenge",
+    "distance": 0.55
+  },
+  {
+    "word": "gremlins",
+    "nearest_type": "horror",
+    "distance": 0.5471
+  },
+  {
+    "word": "grievances",
+    "nearest_type": "revenge",
+    "distance": 0.5556
+  },
+  {
+    "word": "grimiest",
+    "nearest_type": "horror",
+    "distance": 0.554
+  },
+  {
+    "word": "grudging",
+    "nearest_type": "revenge",
+    "distance": 0.5465
+  },
+  {
+    "word": "gruesomer",
+    "nearest_type": "horror",
+    "distance": 0.5446
+  },
+  {
+    "word": "guiltier",
+    "nearest_type": "regret",
+    "distance": 0.5507
+  },
+  {
+    "word": "guiltless",
+    "nearest_type": "regret",
+    "distance": 0.5555
+  },
+  {
+    "word": "habit",
+    "nearest_type": "regret",
+    "distance": 0.5498
+  },
+  {
+    "word": "harass",
+    "nearest_type": "revenge",
+    "distance": 0.5464
+  },
+  {
+    "word": "harshness",
+    "nearest_type": "revenge",
+    "distance": 0.5557
+  },
+  {
+    "word": "hatefulness",
+    "nearest_type": "grief",
+    "distance": 0.5535
+  },
+  {
+    "word": "hating",
+    "nearest_type": "revenge",
+    "distance": 0.5505
+  },
+  {
+    "word": "hatreds",
+    "nearest_type": "revenge",
+    "distance": 0.5536
+  },
+  {
+    "word": "havoc",
+    "nearest_type": "horror",
+    "distance": 0.557
+  },
+  {
+    "word": "heartbeats",
+    "nearest_type": "love",
+    "distance": 0.5584
+  },
+  {
+    "word": "heartbroken",
+    "nearest_type": "love",
+    "distance": 0.5449
+  },
+  {
+    "word": "heartiest",
+    "nearest_type": "love",
+    "distance": 0.5589
+  },
+  {
+    "word": "heavyhearted",
+    "nearest_type": "grief",
+    "distance": 0.5499
+  },
+  {
+    "word": "hellish",
+    "nearest_type": "horror",
+    "distance": 0.5473
+  },
+  {
+    "word": "hesitate",
+    "nearest_type": "regret",
+    "distance": 0.5512
+  },
+  {
+    "word": "hides",
+    "nearest_type": "mystery",
+    "distance": 0.5691
+  },
+  {
+    "word": "hiding",
+    "nearest_type": "mystery",
+    "distance": 0.5571
+  },
+  {
+    "word": "histories",
+    "nearest_type": "regret",
+    "distance": 0.5461
+  },
+  {
+    "word": "hoax",
+    "nearest_type": "mystery",
+    "distance": 0.567
+  },
+  {
+    "word": "hoaxes",
+    "nearest_type": "mystery",
+    "distance": 0.5557
+  },
+  {
+    "word": "holocaust",
+    "nearest_type": "horror",
+    "distance": 0.5498
+  },
+  {
+    "word": "holocausts",
+    "nearest_type": "horror",
+    "distance": 0.5537
+  },
+  {
+    "word": "homicide",
+    "nearest_type": "revenge",
+    "distance": 0.5482
+  },
+  {
+    "word": "honesty",
+    "nearest_type": "regret",
+    "distance": 0.562
+  },
+  {
+    "word": "honoring",
+    "nearest_type": "love",
+    "distance": 0.5588
+  },
+  {
+    "word": "hookups",
+    "nearest_type": "love",
+    "distance": 0.5444
+  },
+  {
+    "word": "horrifying",
+    "nearest_type": "horror",
+    "distance": 0.543
+  },
+  {
+    "word": "hostile",
+    "nearest_type": "revenge",
+    "distance": 0.5534
+  },
+  {
+    "word": "hugged",
+    "nearest_type": "love",
+    "distance": 0.5594
+  },
+  {
+    "word": "hugs",
+    "nearest_type": "love",
+    "distance": 0.5489
+  },
+  {
+    "word": "humiliated",
+    "nearest_type": "revenge",
+    "distance": 0.5499
+  },
+  {
+    "word": "humility",
+    "nearest_type": "regret",
+    "distance": 0.5615
+  },
+  {
+    "word": "hypnotic",
+    "nearest_type": "horror",
+    "distance": 0.5465
+  },
+  {
+    "word": "hysterical",
+    "nearest_type": "comedy",
+    "distance": 0.54
+  },
+  {
+    "word": "identity",
+    "nearest_type": "mystery",
+    "distance": 0.5638
+  },
+  {
+    "word": "idly",
+    "nearest_type": "wonder",
+    "distance": 0.5457
+  },
+  {
+    "word": "illusions",
+    "nearest_type": "mystery",
+    "distance": 0.5579
+  },
+  {
+    "word": "imaginations",
+    "nearest_type": "wonder",
+    "distance": 0.5223
+  },
+  {
+    "word": "imagine",
+    "nearest_type": "wonder",
+    "distance": 0.5333
+  },
+  {
+    "word": "imagined",
+    "nearest_type": "wonder",
+    "distance": 0.5791
+  },
+  {
+    "word": "imagining",
+    "nearest_type": "wonder",
+    "distance": 0.5125
+  },
+  {
+    "word": "imaginings",
+    "nearest_type": "wonder",
+    "distance": 0.5555
+  },
+  {
+    "word": "immobility",
+    "nearest_type": "grief",
+    "distance": 0.5501
+  },
+  {
+    "word": "impalement",
+    "nearest_type": "revenge",
+    "distance": 0.5546
+  },
+  {
+    "word": "inanity",
+    "nearest_type": "regret",
+    "distance": 0.5564
+  },
+  {
+    "word": "indecision",
+    "nearest_type": "regret",
+    "distance": 0.5382
+  },
+  {
+    "word": "indiscretion",
+    "nearest_type": "regret",
+    "distance": 0.5591
+  },
+  {
+    "word": "infanticide",
+    "nearest_type": "grief",
+    "distance": 0.5516
+  },
+  {
+    "word": "inhumanity",
+    "nearest_type": "revenge",
+    "distance": 0.5543
+  },
+  {
+    "word": "inquired",
+    "nearest_type": "wonder",
+    "distance": 0.5806
+  },
+  {
+    "word": "inquires",
+    "nearest_type": "wonder",
+    "distance": 0.5901
+  },
+  {
+    "word": "inquiring",
+    "nearest_type": "wonder",
+    "distance": 0.5618
+  },
+  {
+    "word": "inquiringly",
+    "nearest_type": "wonder",
+    "distance": 0.5885
+  },
+  {
+    "word": "inquiry",
+    "nearest_type": "wonder",
+    "distance": 0.5129
+  },
+  {
+    "word": "intercourse",
+    "nearest_type": "love",
+    "distance": 0.5389
+  },
+  {
+    "word": "intoxication",
+    "nearest_type": "grief",
+    "distance": 0.5542
+  },
+  {
+    "word": "intrigue",
+    "nearest_type": "mystery",
+    "distance": 0.5685
+  },
+  {
+    "word": "investigate",
+    "nearest_type": "mystery",
+    "distance": 0.5358
+  },
+  {
+    "word": "investigates",
+    "nearest_type": "mystery",
+    "distance": 0.5361
+  },
+  {
+    "word": "invisible",
+    "nearest_type": "mystery",
+    "distance": 0.5595
+  },
+  {
+    "word": "irksomeness",
+    "nearest_type": "grief",
+    "distance": 0.5527
+  },
+  {
+    "word": "irreverent",
+    "nearest_type": "comedy",
+    "distance": 0.561
+  },
+  {
+    "word": "irritability",
+    "nearest_type": "grief",
+    "distance": 0.5464
+  },
+  {
+    "word": "jealousies",
+    "nearest_type": "revenge",
+    "distance": 0.5439
+  },
+  {
+    "word": "jocularity",
+    "nearest_type": "comedy",
+    "distance": 0.5667
+  },
+  {
+    "word": "jokers",
+    "nearest_type": "comedy",
+    "distance": 0.5365
+  },
+  {
+    "word": "joking",
+    "nearest_type": "comedy",
+    "distance": 0.5445
+  },
+  {
+    "word": "journalism",
+    "nearest_type": "comedy",
+    "distance": 0.5591
+  },
+  {
+    "word": "kill",
+    "nearest_type": "revenge",
+    "distance": 0.5475
+  },
+  {
+    "word": "killers",
+    "nearest_type": "horror",
+    "distance": 0.5525
+  },
+  {
+    "word": "lament",
+    "nearest_type": "grief",
+    "distance": 0.5533
+  },
+  {
+    "word": "laughs",
+    "nearest_type": "comedy",
+    "distance": 0.5365
+  },
+  {
+    "word": "lesbianism",
+    "nearest_type": "comedy",
+    "distance": 0.5407
+  },
+  {
+    "word": "libeling",
+    "nearest_type": "revenge",
+    "distance": 0.5465
+  },
+  {
+    "word": "lifelessly",
+    "nearest_type": "grief",
+    "distance": 0.5523
+  },
+  {
+    "word": "lingered",
+    "nearest_type": "regret",
+    "distance": 0.5485
+  },
+  {
+    "word": "living",
+    "nearest_type": "grief",
+    "distance": 0.546
+  },
+  {
+    "word": "lonely",
+    "nearest_type": "grief",
+    "distance": 0.5507
+  },
+  {
+    "word": "longing",
+    "nearest_type": "grief",
+    "distance": 0.55
+  },
+  {
+    "word": "losses",
+    "nearest_type": "regret",
+    "distance": 0.5424
+  },
+  {
+    "word": "loutishness",
+    "nearest_type": "horror",
+    "distance": 0.5452
+  },
+  {
+    "word": "lovable",
+    "nearest_type": "love",
+    "distance": 0.5471
+  },
+  {
+    "word": "loyalism",
+    "nearest_type": "love",
+    "distance": 0.5449
+  },
+  {
+    "word": "loyalties",
+    "nearest_type": "love",
+    "distance": 0.5518
+  },
+  {
+    "word": "luring",
+    "nearest_type": "love",
+    "distance": 0.542
+  },
+  {
+    "word": "lusts",
+    "nearest_type": "love",
+    "distance": 0.546
+  },
+  {
+    "word": "madly",
+    "nearest_type": "love",
+    "distance": 0.5558
+  },
+  {
+    "word": "maltreatment",
+    "nearest_type": "revenge",
+    "distance": 0.5499
+  },
+  {
+    "word": "marry",
+    "nearest_type": "love",
+    "distance": 0.5454
+  },
+  {
+    "word": "masochism",
+    "nearest_type": "horror",
+    "distance": 0.545
+  },
+  {
+    "word": "matrimony",
+    "nearest_type": "love",
+    "distance": 0.5405
+  },
+  {
+    "word": "media",
+    "nearest_type": "comedy",
+    "distance": 0.5667
+  },
+  {
+    "word": "memorability",
+    "nearest_type": "comedy",
+    "distance": 0.5412
+  },
+  {
+    "word": "mind",
+    "nearest_type": "wonder",
+    "distance": 0.5692
+  },
+  {
+    "word": "minds",
+    "nearest_type": "wonder",
+    "distance": 0.5627
+  },
+  {
+    "word": "miniseries",
+    "nearest_type": "comedy",
+    "distance": 0.542
+  },
+  {
+    "word": "miracle",
+    "nearest_type": "mystery",
+    "distance": 0.5605
+  },
+  {
+    "word": "mirthless",
+    "nearest_type": "grief",
+    "distance": 0.5528
+  },
+  {
+    "word": "miscarried",
+    "nearest_type": "grief",
+    "distance": 0.5507
+  },
+  {
+    "word": "miscarries",
+    "nearest_type": "grief",
+    "distance": 0.5542
+  },
+  {
+    "word": "miscued",
+    "nearest_type": "regret",
+    "distance": 0.5639
+  },
+  {
+    "word": "miscues",
+    "nearest_type": "regret",
+    "distance": 0.5414
+  },
+  {
+    "word": "misgivings",
+    "nearest_type": "regret",
+    "distance": 0.5548
+  },
+  {
+    "word": "misspend",
+    "nearest_type": "regret",
+    "distance": 0.5449
+  },
+  {
+    "word": "misstep",
+    "nearest_type": "regret",
+    "distance": 0.5584
+  },
+  {
+    "word": "mocking",
+    "nearest_type": "comedy",
+    "distance": 0.5466
+  },
+  {
+    "word": "monologues",
+    "nearest_type": "comedy",
+    "distance": 0.5647
+  },
+  {
+    "word": "monstrosity",
+    "nearest_type": "horror",
+    "distance": 0.5555
+  },
+  {
+    "word": "monstrous",
+    "nearest_type": "horror",
+    "distance": 0.5488
+  },
+  {
+    "word": "morphine",
+    "nearest_type": "grief",
+    "distance": 0.5535
+  },
+  {
+    "word": "motherhood",
+    "nearest_type": "grief",
+    "distance": 0.5537
+  },
+  {
+    "word": "mummifying",
+    "nearest_type": "horror",
+    "distance": 0.5485
+  },
+  {
+    "word": "mused",
+    "nearest_type": "wonder",
+    "distance": 0.5248
+  },
+  {
+    "word": "music",
+    "nearest_type": "comedy",
+    "distance": 0.5385
+  },
+  {
+    "word": "musicals",
+    "nearest_type": "comedy",
+    "distance": 0.5415
+  },
+  {
+    "word": "musingly",
+    "nearest_type": "wonder",
+    "distance": 0.5916
+  },
+  {
+    "word": "mutiny",
+    "nearest_type": "revenge",
+    "distance": 0.5522
+  },
+  {
+    "word": "muzzling",
+    "nearest_type": "mystery",
+    "distance": 0.5535
+  },
+  {
+    "word": "mystical",
+    "nearest_type": "mystery",
+    "distance": 0.5421
+  },
+  {
+    "word": "mystified",
+    "nearest_type": "wonder",
+    "distance": 0.5841
+  },
+  {
+    "word": "necrotic",
+    "nearest_type": "grief",
+    "distance": 0.5497
+  },
+  {
+    "word": "negligence",
+    "nearest_type": "revenge",
+    "distance": 0.5543
+  },
+  {
+    "word": "nonplussed",
+    "nearest_type": "wonder",
+    "distance": 0.5857
+  },
+  {
+    "word": "numbing",
+    "nearest_type": "horror",
+    "distance": 0.5562
+  },
+  {
+    "word": "obedience",
+    "nearest_type": "love",
+    "distance": 0.5538
+  },
+  {
+    "word": "obfuscated",
+    "nearest_type": "mystery",
+    "distance": 0.5662
+  },
+  {
+    "word": "obituaries",
+    "nearest_type": "grief",
+    "distance": 0.5462
+  },
+  {
+    "word": "objurgations",
+    "nearest_type": "grief",
+    "distance": 0.5543
+  },
+  {
+    "word": "oblivion",
+    "nearest_type": "horror",
+    "distance": 0.5491
+  },
+  {
+    "word": "obscured",
+    "nearest_type": "mystery",
+    "distance": 0.545
+  },
+  {
+    "word": "obscures",
+    "nearest_type": "mystery",
+    "distance": 0.5672
+  },
+  {
+    "word": "observation",
+    "nearest_type": "mystery",
+    "distance": 0.5443
+  },
+  {
+    "word": "obsessions",
+    "nearest_type": "love",
+    "distance": 0.5525
+  },
+  {
+    "word": "occult",
+    "nearest_type": "mystery",
+    "distance": 0.5539
+  },
+  {
+    "word": "oddities",
+    "nearest_type": "mystery",
+    "distance": 0.5564
+  },
+  {
+    "word": "oneness",
+    "nearest_type": "love",
+    "distance": 0.5456
+  },
+  {
+    "word": "ordeal",
+    "nearest_type": "horror",
+    "distance": 0.5566
+  },
+  {
+    "word": "ordeals",
+    "nearest_type": "horror",
+    "distance": 0.5479
+  },
+  {
+    "word": "orgasm",
+    "nearest_type": "love",
+    "distance": 0.5485
+  },
+  {
+    "word": "outcry",
+    "nearest_type": "revenge",
+    "distance": 0.5542
+  },
+  {
+    "word": "pained",
+    "nearest_type": "grief",
+    "distance": 0.547
+  },
+  {
+    "word": "pantomimes",
+    "nearest_type": "comedy",
+    "distance": 0.5474
+  },
+  {
+    "word": "parodist",
+    "nearest_type": "comedy",
+    "distance": 0.5391
+  },
+  {
+    "word": "pasts",
+    "nearest_type": "regret",
+    "distance": 0.5372
+  },
+  {
+    "word": "pejoration",
+    "nearest_type": "revenge",
+    "distance": 0.5508
+  },
+  {
+    "word": "perpetrating",
+    "nearest_type": "revenge",
+    "distance": 0.5535
+  },
+  {
+    "word": "perplexed",
+    "nearest_type": "wonder",
+    "distance": 0.5518
+  },
+  {
+    "word": "perplexedly",
+    "nearest_type": "wonder",
+    "distance": 0.5617
+  },
+  {
+    "word": "perplexes",
+    "nearest_type": "wonder",
+    "distance": 0.5727
+  },
+  {
+    "word": "perplexing",
+    "nearest_type": "wonder",
+    "distance": 0.5864
+  },
+  {
+    "word": "perplexingly",
+    "nearest_type": "wonder",
+    "distance": 0.587
+  },
+  {
+    "word": "perplexities",
+    "nearest_type": "mystery",
+    "distance": 0.5366
+  },
+  {
+    "word": "persecute",
+    "nearest_type": "revenge",
+    "distance": 0.5546
+  },
+  {
+    "word": "petting",
+    "nearest_type": "love",
+    "distance": 0.5523
+  },
+  {
+    "word": "phantom",
+    "nearest_type": "mystery",
+    "distance": 0.5319
+  },
+  {
+    "word": "phantoms",
+    "nearest_type": "mystery",
+    "distance": 0.5586
+  },
+  {
+    "word": "phenomenon",
+    "nearest_type": "mystery",
+    "distance": 0.5648
+  },
+  {
+    "word": "phobias",
+    "nearest_type": "horror",
+    "distance": 0.554
+  },
+  {
+    "word": "playfully",
+    "nearest_type": "comedy",
+    "distance": 0.5579
+  },
+  {
+    "word": "playfulness",
+    "nearest_type": "love",
+    "distance": 0.5604
+  },
+  {
+    "word": "playwrights",
+    "nearest_type": "comedy",
+    "distance": 0.5412
+  },
+  {
+    "word": "plunder",
+    "nearest_type": "revenge",
+    "distance": 0.5465
+  },
+  {
+    "word": "ponderous",
+    "nearest_type": "wonder",
+    "distance": 0.5638
+  },
+  {
+    "word": "ponderously",
+    "nearest_type": "wonder",
+    "distance": 0.5159
+  },
+  {
+    "word": "possessed",
+    "nearest_type": "horror",
+    "distance": 0.547
+  },
+  {
+    "word": "posterity",
+    "nearest_type": "regret",
+    "distance": 0.5407
+  },
+  {
+    "word": "prankster",
+    "nearest_type": "comedy",
+    "distance": 0.5453
+  },
+  {
+    "word": "preciousness",
+    "nearest_type": "love",
+    "distance": 0.5463
+  },
+  {
+    "word": "probing",
+    "nearest_type": "mystery",
+    "distance": 0.5635
+  },
+  {
+    "word": "protection",
+    "nearest_type": "revenge",
+    "distance": 0.5543
+  },
+  {
+    "word": "psychiatric",
+    "nearest_type": "horror",
+    "distance": 0.5544
+  },
+  {
+    "word": "psychiatry",
+    "nearest_type": "comedy",
+    "distance": 0.5601
+  },
+  {
+    "word": "psychology",
+    "nearest_type": "comedy",
+    "distance": 0.5553
+  },
+  {
+    "word": "psychotropic",
+    "nearest_type": "horror",
+    "distance": 0.5537
+  },
+  {
+    "word": "puppetry",
+    "nearest_type": "comedy",
+    "distance": 0.5546
+  },
+  {
+    "word": "questionably",
+    "nearest_type": "wonder",
+    "distance": 0.5823
+  },
+  {
+    "word": "questioned",
+    "nearest_type": "mystery",
+    "distance": 0.5572
+  },
+  {
+    "word": "questionings",
+    "nearest_type": "wonder",
+    "distance": 0.5101
+  },
+  {
+    "word": "quizzically",
+    "nearest_type": "wonder",
+    "distance": 0.5383
+  },
+  {
+    "word": "racism",
+    "nearest_type": "comedy",
+    "distance": 0.5606
+  },
+  {
+    "word": "random",
+    "nearest_type": "mystery",
+    "distance": 0.5525
+  },
+  {
+    "word": "rap",
+    "nearest_type": "comedy",
+    "distance": 0.5527
+  },
+  {
+    "word": "ratting",
+    "nearest_type": "revenge",
+    "distance": 0.552
+  },
+  {
+    "word": "rebelling",
+    "nearest_type": "revenge",
+    "distance": 0.544
+  },
+  {
+    "word": "reckon",
+    "nearest_type": "wonder",
+    "distance": 0.5929
+  },
+  {
+    "word": "recollects",
+    "nearest_type": "regret",
+    "distance": 0.5368
+  },
+  {
+    "word": "reconsiders",
+    "nearest_type": "regret",
+    "distance": 0.5525
+  },
+  {
+    "word": "reelect",
+    "nearest_type": "regret",
+    "distance": 0.5426
+  },
+  {
+    "word": "reevaluate",
+    "nearest_type": "regret",
+    "distance": 0.5634
+  },
+  {
+    "word": "reevaluation",
+    "nearest_type": "regret",
+    "distance": 0.5642
+  },
+  {
+    "word": "regrettably",
+    "nearest_type": "regret",
+    "distance": 0.5482
+  },
+  {
+    "word": "rejection",
+    "nearest_type": "love",
+    "distance": 0.558
+  },
+  {
+    "word": "religion",
+    "nearest_type": "comedy",
+    "distance": 0.5661
+  },
+  {
+    "word": "remains",
+    "nearest_type": "grief",
+    "distance": 0.5494
+  },
+  {
+    "word": "remembering",
+    "nearest_type": "regret",
+    "distance": 0.5575
+  },
+  {
+    "word": "remembers",
+    "nearest_type": "regret",
+    "distance": 0.5543
+  },
+  {
+    "word": "remissness",
+    "nearest_type": "regret",
+    "distance": 0.5585
+  },
+  {
+    "word": "repay",
+    "nearest_type": "revenge",
+    "distance": 0.5535
+  },
+  {
+    "word": "repentant",
+    "nearest_type": "regret",
+    "distance": 0.5444
+  },
+  {
+    "word": "repented",
+    "nearest_type": "regret",
+    "distance": 0.5493
+  },
+  {
+    "word": "reprehension",
+    "nearest_type": "regret",
+    "distance": 0.5394
+  },
+  {
+    "word": "reprieving",
+    "nearest_type": "grief",
+    "distance": 0.5511
+  },
+  {
+    "word": "reprise",
+    "nearest_type": "regret",
+    "distance": 0.559
+  },
+  {
+    "word": "rethink",
+    "nearest_type": "regret",
+    "distance": 0.5368
+  },
+  {
+    "word": "retrospects",
+    "nearest_type": "regret",
+    "distance": 0.5402
+  },
+  {
+    "word": "revealed",
+    "nearest_type": "mystery",
+    "distance": 0.5621
+  },
+  {
+    "word": "reveals",
+    "nearest_type": "mystery",
+    "distance": 0.5436
+  },
+  {
+    "word": "reverted",
+    "nearest_type": "regret",
+    "distance": 0.5618
+  },
+  {
+    "word": "rivalry",
+    "nearest_type": "revenge",
+    "distance": 0.5557
+  },
+  {
+    "word": "romanticize",
+    "nearest_type": "love",
+    "distance": 0.5604
+  },
+  {
+    "word": "rotting",
+    "nearest_type": "horror",
+    "distance": 0.5476
+  },
+  {
+    "word": "rudeness",
+    "nearest_type": "revenge",
+    "distance": 0.55
+  },
+  {
+    "word": "ruin",
+    "nearest_type": "grief",
+    "distance": 0.5503
+  },
+  {
+    "word": "rumination",
+    "nearest_type": "regret",
+    "distance": 0.5364
+  },
+  {
+    "word": "ruminations",
+    "nearest_type": "grief",
+    "distance": 0.5497
+  },
+  {
+    "word": "sadists",
+    "nearest_type": "horror",
+    "distance": 0.5558
+  },
+  {
+    "word": "sardonic",
+    "nearest_type": "comedy",
+    "distance": 0.541
+  },
+  {
+    "word": "satanism",
+    "nearest_type": "horror",
+    "distance": 0.5534
+  },
+  {
+    "word": "satiric",
+    "nearest_type": "comedy",
+    "distance": 0.5654
+  },
+  {
+    "word": "satirically",
+    "nearest_type": "comedy",
+    "distance": 0.5649
+  },
+  {
+    "word": "satirize",
+    "nearest_type": "comedy",
+    "distance": 0.5434
+  },
+  {
+    "word": "satirizing",
+    "nearest_type": "comedy",
+    "distance": 0.545
+  },
+  {
+    "word": "savageness",
+    "nearest_type": "revenge",
+    "distance": 0.545
+  },
+  {
+    "word": "savoriness",
+    "nearest_type": "love",
+    "distance": 0.5506
+  },
+  {
+    "word": "scared",
+    "nearest_type": "horror",
+    "distance": 0.556
+  },
+  {
+    "word": "scarified",
+    "nearest_type": "horror",
+    "distance": 0.5436
+  },
+  {
+    "word": "scarify",
+    "nearest_type": "horror",
+    "distance": 0.5444
+  },
+  {
+    "word": "scarper",
+    "nearest_type": "horror",
+    "distance": 0.5548
+  },
+  {
+    "word": "scripts",
+    "nearest_type": "comedy",
+    "distance": 0.5367
+  },
+  {
+    "word": "secreting",
+    "nearest_type": "mystery",
+    "distance": 0.5494
+  },
+  {
+    "word": "seduction",
+    "nearest_type": "love",
+    "distance": 0.5392
+  },
+  {
+    "word": "selfish",
+    "nearest_type": "regret",
+    "distance": 0.5584
+  },
+  {
+    "word": "selflessness",
+    "nearest_type": "love",
+    "distance": 0.5592
+  },
+  {
+    "word": "sentencing",
+    "nearest_type": "revenge",
+    "distance": 0.549
+  },
+  {
+    "word": "sentimental",
+    "nearest_type": "grief",
+    "distance": 0.5518
+  },
+  {
+    "word": "shadow",
+    "nearest_type": "mystery",
+    "distance": 0.544
+  },
+  {
+    "word": "shadows",
+    "nearest_type": "mystery",
+    "distance": 0.5655
+  },
+  {
+    "word": "shameful",
+    "nearest_type": "regret",
+    "distance": 0.5356
+  },
+  {
+    "word": "shiver",
+    "nearest_type": "horror",
+    "distance": 0.5478
+  },
+  {
+    "word": "shocked",
+    "nearest_type": "wonder",
+    "distance": 0.5526
+  },
+  {
+    "word": "shuddering",
+    "nearest_type": "horror",
+    "distance": 0.5508
+  },
+  {
+    "word": "sigh",
+    "nearest_type": "grief",
+    "distance": 0.5532
+  },
+  {
+    "word": "sins",
+    "nearest_type": "regret",
+    "distance": 0.5424
+  },
+  {
+    "word": "skeptical",
+    "nearest_type": "wonder",
+    "distance": 0.5846
+  },
+  {
+    "word": "skeptically",
+    "nearest_type": "wonder",
+    "distance": 0.5909
+  },
+  {
+    "word": "skepticism",
+    "nearest_type": "wonder",
+    "distance": 0.5695
+  },
+  {
+    "word": "slayings",
+    "nearest_type": "horror",
+    "distance": 0.557
+  },
+  {
+    "word": "smiles",
+    "nearest_type": "love",
+    "distance": 0.5486
+  },
+  {
+    "word": "snuggle",
+    "nearest_type": "love",
+    "distance": 0.5529
+  },
+  {
+    "word": "snuggles",
+    "nearest_type": "love",
+    "distance": 0.5496
+  },
+  {
+    "word": "snuggling",
+    "nearest_type": "love",
+    "distance": 0.5537
+  },
+  {
+    "word": "sociology",
+    "nearest_type": "comedy",
+    "distance": 0.5395
+  },
+  {
+    "word": "solitude",
+    "nearest_type": "grief",
+    "distance": 0.5464
+  },
+  {
+    "word": "soullessly",
+    "nearest_type": "love",
+    "distance": 0.5596
+  },
+  {
+    "word": "soulmate",
+    "nearest_type": "love",
+    "distance": 0.5458
+  },
+  {
+    "word": "spanked",
+    "nearest_type": "revenge",
+    "distance": 0.5466
+  },
+  {
+    "word": "speechless",
+    "nearest_type": "wonder",
+    "distance": 0.5719
+  },
+  {
+    "word": "spirits",
+    "nearest_type": "grief",
+    "distance": 0.5539
+  },
+  {
+    "word": "spookier",
+    "nearest_type": "horror",
+    "distance": 0.5519
+  },
+  {
+    "word": "spooking",
+    "nearest_type": "horror",
+    "distance": 0.5452
+  },
+  {
+    "word": "squalidness",
+    "nearest_type": "horror",
+    "distance": 0.5563
+  },
+  {
+    "word": "stabbed",
+    "nearest_type": "revenge",
+    "distance": 0.5465
+  },
+  {
+    "word": "stares",
+    "nearest_type": "wonder",
+    "distance": 0.5621
+  },
+  {
+    "word": "starvation",
+    "nearest_type": "grief",
+    "distance": 0.5469
+  },
+  {
+    "word": "stillbirth",
+    "nearest_type": "grief",
+    "distance": 0.5515
+  },
+  {
+    "word": "stumping",
+    "nearest_type": "mystery",
+    "distance": 0.5375
+  },
+  {
+    "word": "stunned",
+    "nearest_type": "wonder",
+    "distance": 0.5469
+  },
+  {
+    "word": "stupidity",
+    "nearest_type": "comedy",
+    "distance": 0.5553
+  },
+  {
+    "word": "superheroes",
+    "nearest_type": "comedy",
+    "distance": 0.5631
+  },
+  {
+    "word": "superheros",
+    "nearest_type": "comedy",
+    "distance": 0.559
+  },
+  {
+    "word": "supernatural",
+    "nearest_type": "horror",
+    "distance": 0.5521
+  },
+  {
+    "word": "surprised",
+    "nearest_type": "wonder",
+    "distance": 0.5204
+  },
+  {
+    "word": "surprising",
+    "nearest_type": "wonder",
+    "distance": 0.5579
+  },
+  {
+    "word": "suspect",
+    "nearest_type": "mystery",
+    "distance": 0.5597
+  },
+  {
+    "word": "suspicious",
+    "nearest_type": "mystery",
+    "distance": 0.5657
+  },
+  {
+    "word": "sweethearts",
+    "nearest_type": "love",
+    "distance": 0.5565
+  },
+  {
+    "word": "symbolic",
+    "nearest_type": "mystery",
+    "distance": 0.5623
+  },
+  {
+    "word": "sympathetic",
+    "nearest_type": "grief",
+    "distance": 0.5511
+  },
+  {
+    "word": "tangled",
+    "nearest_type": "horror",
+    "distance": 0.5568
+  },
+  {
+    "word": "tastefulness",
+    "nearest_type": "regret",
+    "distance": 0.5622
+  },
+  {
+    "word": "tattlers",
+    "nearest_type": "revenge",
+    "distance": 0.5561
+  },
+  {
+    "word": "taunted",
+    "nearest_type": "revenge",
+    "distance": 0.5457
+  },
+  {
+    "word": "tearaways",
+    "nearest_type": "grief",
+    "distance": 0.5536
+  },
+  {
+    "word": "temptation",
+    "nearest_type": "regret",
+    "distance": 0.5436
+  },
+  {
+    "word": "terribleness",
+    "nearest_type": "horror",
+    "distance": 0.5485
+  },
+  {
+    "word": "terrifies",
+    "nearest_type": "horror",
+    "distance": 0.5562
+  },
+  {
+    "word": "theatrical",
+    "nearest_type": "comedy",
+    "distance": 0.5608
+  },
+  {
+    "word": "thinkers",
+    "nearest_type": "wonder",
+    "distance": 0.5727
+  },
+  {
+    "word": "thinking",
+    "nearest_type": "wonder",
+    "distance": 0.5099
+  },
+  {
+    "word": "thinks",
+    "nearest_type": "wonder",
+    "distance": 0.538
+  },
+  {
+    "word": "thought",
+    "nearest_type": "wonder",
+    "distance": 0.5565
+  },
+  {
+    "word": "thoughtless",
+    "nearest_type": "wonder",
+    "distance": 0.5917
+  },
+  {
+    "word": "threatening",
+    "nearest_type": "revenge",
+    "distance": 0.5474
+  },
+  {
+    "word": "tormentors",
+    "nearest_type": "horror",
+    "distance": 0.5515
+  },
+  {
+    "word": "tortured",
+    "nearest_type": "revenge",
+    "distance": 0.5502
+  },
+  {
+    "word": "traumatized",
+    "nearest_type": "grief",
+    "distance": 0.5518
+  },
+  {
+    "word": "traumatizes",
+    "nearest_type": "horror",
+    "distance": 0.5491
+  },
+  {
+    "word": "travails",
+    "nearest_type": "grief",
+    "distance": 0.5469
+  },
+  {
+    "word": "trickery",
+    "nearest_type": "mystery",
+    "distance": 0.5661
+  },
+  {
+    "word": "trickiness",
+    "nearest_type": "mystery",
+    "distance": 0.5434
+  },
+  {
+    "word": "truelove",
+    "nearest_type": "love",
+    "distance": 0.5602
+  },
+  {
+    "word": "trumpery",
+    "nearest_type": "comedy",
+    "distance": 0.545
+  },
+  {
+    "word": "trustfulness",
+    "nearest_type": "love",
+    "distance": 0.5455
+  },
+  {
+    "word": "truthfulness",
+    "nearest_type": "regret",
+    "distance": 0.5647
+  },
+  {
+    "word": "twilight",
+    "nearest_type": "horror",
+    "distance": 0.5453
+  },
+  {
+    "word": "twilled",
+    "nearest_type": "wonder",
+    "distance": 0.5728
+  },
+  {
+    "word": "ugliness",
+    "nearest_type": "horror",
+    "distance": 0.5556
+  },
+  {
+    "word": "unanswerable",
+    "nearest_type": "mystery",
+    "distance": 0.5524
+  },
+  {
+    "word": "uncertainty",
+    "nearest_type": "mystery",
+    "distance": 0.5347
+  },
+  {
+    "word": "uncovers",
+    "nearest_type": "mystery",
+    "distance": 0.5464
+  },
+  {
+    "word": "undercover",
+    "nearest_type": "mystery",
+    "distance": 0.5453
+  },
+  {
+    "word": "unexpected",
+    "nearest_type": "mystery",
+    "distance": 0.5466
+  },
+  {
+    "word": "unexplored",
+    "nearest_type": "mystery",
+    "distance": 0.5527
+  },
+  {
+    "word": "unfairest",
+    "nearest_type": "revenge",
+    "distance": 0.5546
+  },
+  {
+    "word": "unfamiliar",
+    "nearest_type": "mystery",
+    "distance": 0.5674
+  },
+  {
+    "word": "unknowable",
+    "nearest_type": "mystery",
+    "distance": 0.5323
+  },
+  {
+    "word": "unknowings",
+    "nearest_type": "mystery",
+    "distance": 0.5319
+  },
+  {
+    "word": "unlearn",
+    "nearest_type": "regret",
+    "distance": 0.5644
+  },
+  {
+    "word": "unlovely",
+    "nearest_type": "love",
+    "distance": 0.5517
+  },
+  {
+    "word": "unpleasant",
+    "nearest_type": "grief",
+    "distance": 0.5511
+  },
+  {
+    "word": "unruliness",
+    "nearest_type": "revenge",
+    "distance": 0.5504
+  },
+  {
+    "word": "unspecified",
+    "nearest_type": "mystery",
+    "distance": 0.5328
+  },
+  {
+    "word": "untoward",
+    "nearest_type": "horror",
+    "distance": 0.5545
+  },
+  {
+    "word": "unusual",
+    "nearest_type": "mystery",
+    "distance": 0.5601
+  },
+  {
+    "word": "unveiled",
+    "nearest_type": "mystery",
+    "distance": 0.5579
+  },
+  {
+    "word": "unwonted",
+    "nearest_type": "wonder",
+    "distance": 0.5886
+  },
+  {
+    "word": "vanished",
+    "nearest_type": "mystery",
+    "distance": 0.5688
+  },
+  {
+    "word": "vaudeville",
+    "nearest_type": "comedy",
+    "distance": 0.5535
+  },
+  {
+    "word": "veneration",
+    "nearest_type": "grief",
+    "distance": 0.55
+  },
+  {
+    "word": "vicarious",
+    "nearest_type": "grief",
+    "distance": 0.5524
+  },
+  {
+    "word": "villains",
+    "nearest_type": "revenge",
+    "distance": 0.549
+  },
+  {
+    "word": "visions",
+    "nearest_type": "horror",
+    "distance": 0.5441
+  },
+  {
+    "word": "vomits",
+    "nearest_type": "horror",
+    "distance": 0.5459
+  },
+  {
+    "word": "voodooism",
+    "nearest_type": "horror",
+    "distance": 0.5451
+  },
+  {
+    "word": "warmness",
+    "nearest_type": "love",
+    "distance": 0.5531
+  },
+  {
+    "word": "weird",
+    "nearest_type": "mystery",
+    "distance": 0.5527
+  },
+  {
+    "word": "weirdies",
+    "nearest_type": "mystery",
+    "distance": 0.5692
+  },
+  {
+    "word": "werewolf",
+    "nearest_type": "horror",
+    "distance": 0.5569
+  },
+  {
+    "word": "werewolves",
+    "nearest_type": "horror",
+    "distance": 0.5467
+  },
+  {
+    "word": "whodunits",
+    "nearest_type": "mystery",
+    "distance": 0.5418
+  },
+  {
+    "word": "witch",
+    "nearest_type": "horror",
+    "distance": 0.5535
+  },
+  {
+    "word": "witticism",
+    "nearest_type": "comedy",
+    "distance": 0.5467
+  },
+  {
+    "word": "worried",
+    "nearest_type": "wonder",
+    "distance": 0.5852
+  },
+  {
+    "word": "wreaking",
+    "nearest_type": "horror",
+    "distance": 0.5455
+  },
+  {
+    "word": "wrestling",
+    "nearest_type": "comedy",
+    "distance": 0.5381
+  },
+  {
+    "word": "writers",
+    "nearest_type": "comedy",
+    "distance": 0.5484
+  },
+  {
+    "word": "wrongdoings",
+    "nearest_type": "revenge",
+    "distance": 0.5458
+  },
+  {
+    "word": "wrongness",
+    "nearest_type": "regret",
+    "distance": 0.5523
+  },
+  {
+    "word": "wry",
+    "nearest_type": "comedy",
+    "distance": 0.5654
+  }
+]

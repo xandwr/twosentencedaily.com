@@ -1,0 +1,206 @@
+<script lang="ts">
+	import { supabase } from "$lib/supabaseClient";
+	import { getUser } from "$lib/auth.svelte";
+	import { getDailyPrompt } from "$lib/promptGenerator";
+
+	type Tab = "archive" | "mine";
+
+	let activeTab = $state<Tab>("archive");
+	let loading = $state(true);
+
+	interface ArchiveDay {
+		date: string;
+		type: string;
+		keywords: string[];
+		submissions: { sentence1: string; sentence2: string; display_name: string }[];
+	}
+
+	interface MySubmission {
+		prompt_date: string;
+		sentence1: string;
+		sentence2: string;
+		score: number | null;
+		submitted_at: string;
+	}
+
+	let archive = $state<ArchiveDay[]>([]);
+	let mySubmissions = $state<MySubmission[]>([]);
+
+	async function loadArchive() {
+		loading = true;
+
+		const today = getDailyPrompt().date;
+		const { data: prompts } = await supabase
+			.from("daily_prompts")
+			.select("date, type, keywords")
+			.lt("date", today)
+			.order("date", { ascending: false })
+			.limit(30);
+
+		if (!prompts || prompts.length === 0) {
+			archive = [];
+			loading = false;
+			return;
+		}
+
+		const dates = prompts.map((p) => p.date);
+		const { data: subs } = await supabase
+			.from("submissions")
+			.select("prompt_date, sentence1, sentence2, score, profiles!submissions_profile_id_fkey(username, display_name)")
+			.in("prompt_date", dates)
+			.order("score", { ascending: false, nullsFirst: false })
+			.limit(150);
+
+		const subsByDate = new Map<
+			string,
+			{ sentence1: string; sentence2: string; display_name: string }[]
+		>();
+		for (const s of (subs ?? []) as any[]) {
+			const list = subsByDate.get(s.prompt_date) ?? [];
+			if (list.length < 5) list.push({
+				sentence1: s.sentence1,
+				sentence2: s.sentence2,
+				display_name: s.profiles?.username ?? s.profiles?.display_name ?? "Anonymous",
+			});
+			subsByDate.set(s.prompt_date, list);
+		}
+
+		archive = prompts.map((p) => ({
+			...p,
+			submissions: subsByDate.get(p.date) ?? [],
+		}));
+
+		loading = false;
+	}
+
+	async function loadMine() {
+		loading = true;
+		const user = getUser();
+		if (!user) {
+			mySubmissions = [];
+			loading = false;
+			return;
+		}
+
+		const { data } = await supabase
+			.from("submissions")
+			.select("prompt_date, sentence1, sentence2, score, submitted_at")
+			.eq("user_id", user.id)
+			.order("prompt_date", { ascending: false })
+			.limit(50);
+
+		mySubmissions = data ?? [];
+		loading = false;
+	}
+
+	function switchTab(tab: Tab) {
+		activeTab = tab;
+		if (tab === "archive") loadArchive();
+		else loadMine();
+	}
+
+	loadArchive();
+</script>
+
+<div class="flex flex-col items-center gap-6 w-full">
+	<!-- Tabs -->
+	<div class="flex w-full border-b border-gray-200">
+		<button
+			onclick={() => switchTab("archive")}
+			class="flex-1 pb-2.5 text-sm font-medium transition-colors {activeTab ===
+			'archive'
+				? 'text-black border-b-2 border-black'
+				: 'text-gray-400 hover:text-gray-600'}"
+		>
+			Archive
+		</button>
+		{#if getUser()}
+			<button
+				onclick={() => switchTab("mine")}
+				class="flex-1 pb-2.5 text-sm font-medium transition-colors {activeTab ===
+				'mine'
+					? 'text-black border-b-2 border-black'
+					: 'text-gray-400 hover:text-gray-600'}"
+			>
+				My Submissions
+			</button>
+		{/if}
+	</div>
+
+	{#if loading}
+		<p class="text-gray-400 text-sm">Loading...</p>
+	{:else if activeTab === "archive"}
+		{#if archive.length === 0}
+			<div class="text-center py-12 space-y-2">
+				<p class="text-gray-500">No past prompts yet.</p>
+				<p class="text-sm text-gray-400">Check back tomorrow!</p>
+			</div>
+		{:else}
+			<div class="w-full space-y-6">
+				{#each archive as day}
+					<div class="border border-gray-100 rounded-lg p-5">
+						<p class="text-[11px] text-gray-300">{day.date}</p>
+						<p class="font-semibold text-sm mt-1">
+							{day.type}
+							<span class="font-normal text-gray-400">
+								&mdash; {day.keywords.join(", ")}
+							</span>
+						</p>
+						{#if day.submissions.length > 0}
+							<div
+								class="mt-3 space-y-2 border-t border-gray-50 pt-3"
+							>
+								{#each day.submissions as sub}
+									<div class="text-sm leading-relaxed">
+										<p class="text-xs text-gray-400 mb-1">{sub.display_name}</p>
+										<p>{sub.sentence1}</p>
+										<p class="text-gray-600">
+											{sub.sentence2}
+										</p>
+									</div>
+								{/each}
+							</div>
+						{:else}
+							<p class="text-xs text-gray-300 mt-2">
+								No submissions
+							</p>
+						{/if}
+					</div>
+				{/each}
+			</div>
+		{/if}
+	{:else if activeTab === "mine"}
+		{#if mySubmissions.length === 0}
+			<div class="text-center py-12 space-y-2">
+				<p class="text-gray-500">No submissions yet.</p>
+				<a
+					href="/"
+					class="text-sm text-black underline underline-offset-2"
+				>
+					Write your first story
+				</a>
+			</div>
+		{:else}
+			<div class="w-full space-y-4">
+				{#each mySubmissions as sub}
+					<div class="border border-gray-100 rounded-lg p-5">
+						<p class="text-[11px] text-gray-300">
+							{sub.prompt_date}
+						</p>
+						<p class="text-sm leading-relaxed mt-2">
+							{sub.sentence1}
+						</p>
+						<p class="text-sm leading-relaxed mt-1">
+							{sub.sentence2}
+						</p>
+						{#if sub.score !== null}
+							<p class="text-[11px] text-gray-300 mt-2">
+								Score: {sub.score.toFixed(3)}
+							</p>
+						{/if}
+					</div>
+				{/each}
+			</div>
+		{/if}
+	{/if}
+</div>
