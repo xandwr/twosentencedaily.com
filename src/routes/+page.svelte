@@ -44,7 +44,8 @@
 	let shared = $state(false);
 
 	function shareText(g: string): string {
-		return `The Two-Sentence Daily | ${g}\ntwosentencedaily.com`;
+		const scorePart = multiplier ? ` | ${multiplier.toFixed(1)}x` : '';
+		return `The Two-Sentence Daily | ${g}${scorePart}\ntwosentencedaily.com`;
 	}
 
 	async function share() {
