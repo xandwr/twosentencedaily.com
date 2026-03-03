@@ -3,6 +3,7 @@
 	import { getUser } from "$lib/auth.svelte";
 	import { getDailyPrompt } from "$lib/promptGenerator";
 	import { renderFeedback } from "$lib/renderFeedback";
+	import { gradeRank } from "$lib/gradeRank";
 
 	type Tab = "archive" | "mine";
 
@@ -72,7 +73,11 @@
 
 		archive = prompts.map((p) => ({
 			...p,
-			submissions: subsByDate.get(p.date) ?? [],
+			submissions: (subsByDate.get(p.date) ?? []).sort((a, b) => {
+				const gd = gradeRank(a.llm_grade) - gradeRank(b.llm_grade);
+				if (gd !== 0) return gd;
+				return (b.score ?? 0) - (a.score ?? 0);
+			}),
 		}));
 
 		loading = false;
