@@ -3,7 +3,7 @@
 	import { getUser } from "$lib/auth.svelte";
 	import { getDailyPrompt } from "$lib/promptGenerator";
 	import { renderFeedback } from "$lib/renderFeedback";
-	import { gradeRank } from "$lib/gradeRank";
+	import { gradeRank, gradeColor } from "$lib/gradeRank";
 
 	type Tab = "archive" | "mine";
 
@@ -113,17 +113,12 @@
 </script>
 
 <div class="flex flex-col items-center gap-6 w-full">
+	<div class="text-center flex flex-col gap-3 border-b-2 pb-2.5 font-medium w-full">
+		<h1 class="text-xl">History</h1>
+		<p class="text-sm text-neutral-400">Past prompts and submissions from the community.</p>
+	</div>
 	<!-- Tabs -->
-	<div class="flex w-full border-b border-gray-200">
-		<button
-			onclick={() => switchTab("archive")}
-			class="flex-1 pb-2.5 text-xl font-medium transition-colors {activeTab ===
-			'archive'
-				? 'text-black border-b-2 border-black'
-				: 'text-gray-400 hover:text-gray-600'}"
-		>
-			Archive
-		</button>
+	<div class="flex w-full">
 		{#if getUser()}
 			<button
 				onclick={() => switchTab("mine")}
@@ -165,7 +160,7 @@
 										<div class="flex items-center gap-2 mb-1">
 											<p class="text-xs text-gray-400">{sub.display_name}</p>
 											{#if sub.llm_grade}
-												<span class="ml-auto text-xs font-semibold text-gray-400">{sub.llm_grade}{#if sub.score} <span class="font-normal text-gray-300">|</span> {sub.score.toFixed(1)}x{/if}</span>
+												<span class="ml-auto text-xs font-semibold {gradeColor(sub.llm_grade)}">{sub.llm_grade}{#if sub.score} <span class="font-normal text-gray-300">|</span> {sub.score.toFixed(1)}x{/if}</span>
 											{/if}
 										</div>
 										<p>{sub.sentence1}</p>
@@ -204,7 +199,7 @@
 								{sub.prompt_date}
 							</p>
 							{#if sub.llm_grade}
-								<span class="ml-auto text-xs font-semibold text-gray-500">{sub.llm_grade}{#if sub.score} <span class="font-normal text-gray-300">|</span> {sub.score.toFixed(1)}x{/if}</span>
+								<span class="ml-auto text-xs font-semibold {gradeColor(sub.llm_grade)}">{sub.llm_grade}{#if sub.score} <span class="font-normal text-gray-300">|</span> {sub.score.toFixed(1)}x{/if}</span>
 							{/if}
 						</div>
 						<p class="text-sm leading-relaxed mt-2">

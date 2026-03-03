@@ -3,6 +3,7 @@
 	import { getDailyPrompt } from "$lib/promptGenerator";
 	import { getUser, signIn } from "$lib/auth.svelte";
 	import { renderFeedback } from "$lib/renderFeedback";
+	import { gradeColor } from "$lib/gradeRank";
 	const prompt = getDailyPrompt();
 
 	let sentence1 = $state("");
@@ -139,7 +140,7 @@
 				</div>
 			{/if}
 			{#if grade}
-				<p class="text-5xl font-bold">{grade}{#if multiplier} <span class="text-gray-400 font-normal">|</span> <span class="text-2xl text-gray-500 font-semibold">{multiplier.toFixed(1)}x</span>{/if}</p>
+				<p class="text-5xl font-bold {gradeColor(grade)}">{grade}{#if multiplier} <span class="text-gray-400 font-normal">|</span> <span class="text-2xl text-gray-500 font-semibold">{multiplier.toFixed(1)}x</span>{/if}</p>
 			{:else}
 				<p class="text-2xl font-semibold">Submitted</p>
 			{/if}

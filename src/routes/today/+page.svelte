@@ -3,7 +3,7 @@
 	import { getDailyPrompt } from "$lib/promptGenerator";
 	import { getUser } from "$lib/auth.svelte";
 	import { renderFeedback } from "$lib/renderFeedback";
-	import { gradeRank } from "$lib/gradeRank";
+	import { gradeRank, gradeColor } from "$lib/gradeRank";
 
 	const prompt = getDailyPrompt();
 
@@ -51,12 +51,21 @@
 </script>
 
 <div class="flex flex-col items-center gap-8">
+	<div class="text-center flex flex-col gap-3 border-b-2 pb-2.5 font-medium w-full">
+		<h1 class="text-xl">Today</h1>
+		<p class="text-sm text-neutral-400">Today's leaderboard. How does yours stack up?</p>
+	</div>
 	<!-- Prompt -->
 	<div class="text-center space-y-3">
-		<p class="text-gray-500 text-sm">Today's prompt</p>
-		<h2 class="text-lg">
+		<div class="text-lg flex gap-2 justify-center items-center">
+			<div class="flex gap-2">
+				<p>on</p>
+				<p class="text-lg font-medium text-neutral-500">{prompt.date}</p>
+				<p>we're writing</p>
+			</div>
+			
 			<span class="font-semibold">{prompt.type}</span> stories about:
-		</h2>
+		</div>
 		<div class="flex gap-4 justify-center">
 			{#each prompt.keywords as keyword}
 				<span
@@ -85,7 +94,7 @@
 						<span class="text-[11px] text-gray-300">#{i + 1}</span>
 						<span class="text-xs text-gray-400">{sub.display_name}</span>
 						{#if sub.llm_grade}
-							<span class="ml-auto text-xs font-semibold text-gray-500">{sub.llm_grade}{#if sub.score} <span class="font-normal text-gray-300">|</span> {sub.score.toFixed(1)}x{/if}</span>
+							<span class="ml-auto text-xs font-semibold {gradeColor(sub.llm_grade)}">{sub.llm_grade}{#if sub.score} <span class="font-normal text-gray-300">|</span> {sub.score.toFixed(1)}x{/if}</span>
 						{/if}
 					</div>
 					<p class="text-sm leading-relaxed">{sub.sentence1}</p>
