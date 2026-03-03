@@ -128,10 +128,15 @@
 			<p class="text-gray-400 text-sm">Loading...</p>
 		</div>
 	{:else if submitted}
-		<div class="w-full text-center py-12 space-y-2">
+		<div class="w-full text-center py-12 space-y-3">
 			<p class="text-2xl font-semibold">Submitted</p>
 			{#if multiplier !== null}
+				{@const clamped = Math.min(Math.max(multiplier, 0), 10)}
+				{@const full = Math.floor(clamped)}
+				{@const frac = clamped - full}
+				{@const partial = frac >= 0.5 ? 1 : frac > 0 ? 1 : 0}
 				<p class="text-lg font-mono">{multiplier.toFixed(1)}x</p>
+				<p class="text-2xl font-mono tracking-widest">{"█".repeat(full)}{"▒".repeat(partial)}{"░".repeat(10 - full - partial)}</p>
 				<p class="text-gray-400 text-sm">above random</p>
 				<button
 					onclick={share}
