@@ -1,14 +1,7 @@
 <script lang="ts">
 	import { supabase } from "$lib/supabaseClient";
 	import { getDailyPrompt } from "$lib/promptGenerator";
-	import {
-		getUser,
-		getShowAuthPrompt,
-		setShowAuthPrompt,
-		signIn,
-	} from "$lib/auth.svelte";
-	import { onMount } from "svelte";
-
+	import { getUser, signIn } from "$lib/auth.svelte";
 	const prompt = getDailyPrompt();
 
 	let sentence1 = $state("");
@@ -17,40 +10,9 @@
 	let submitting = $state(false);
 	let error = $state("");
 
-	onMount(() => {
-		const user = getUser();
-		if (user) checkExistingSubmission();
-
-		// Restore draft from before OAuth redirect and auto-submit
-		const draft = localStorage.getItem("tsd_draft");
-		if (draft && user) {
-			const { sentence1: s1, sentence2: s2 } = JSON.parse(draft);
-			localStorage.removeItem("tsd_draft");
-			if (s1 && s2) {
-				sentence1 = s1;
-				sentence2 = s2;
-				submit();
-			}
-		}
-	});
-
-	// Re-check when user changes (e.g. after OAuth redirect)
+	// Check on mount and when user changes (e.g. after OAuth redirect)
 	$effect(() => {
-		const user = getUser();
-		if (user) {
-			checkExistingSubmission();
-			// Restore draft after auth
-			const draft = localStorage.getItem("tsd_draft");
-			if (draft) {
-				const { sentence1: s1, sentence2: s2 } = JSON.parse(draft);
-				localStorage.removeItem("tsd_draft");
-				if (s1 && s2) {
-					sentence1 = s1;
-					sentence2 = s2;
-					submit();
-				}
-			}
-		}
+		if (getUser()) checkExistingSubmission();
 	});
 
 	async function checkExistingSubmission() {
@@ -70,17 +32,6 @@
 
 	async function submit() {
 		if (!sentence1.trim() || !sentence2.trim()) return;
-
-		const user = getUser();
-		if (!user) {
-			localStorage.setItem(
-				"tsd_draft",
-				JSON.stringify({ sentence1, sentence2 }),
-			);
-			setShowAuthPrompt(true);
-			return;
-		}
-
 		submitting = true;
 		error = "";
 
@@ -117,13 +68,6 @@
 		submitting = false;
 	}
 
-	function handleSignIn() {
-		localStorage.setItem(
-			"tsd_draft",
-			JSON.stringify({ sentence1, sentence2 }),
-		);
-		signIn();
-	}
 </script>
 
 <div class="flex flex-col items-center gap-8">
@@ -145,7 +89,17 @@
 		</div>
 	</div>
 
-	{#if submitted}
+	{#if !getUser()}
+		<div class="w-full text-center py-12 space-y-4">
+			<p class="text-sm text-gray-400">Sign in to play</p>
+			<button
+				onclick={signIn}
+				class="w-full py-3 bg-black text-white text-sm font-medium rounded-lg hover:bg-gray-800 transition-colors"
+			>
+				Sign in with Google
+			</button>
+		</div>
+	{:else if submitted}
 		<div class="w-full text-center py-12 space-y-2">
 			<p class="text-2xl font-semibold">Submitted</p>
 			{#if multiplier !== null}
@@ -211,32 +165,5 @@
 		>
 			{submitting ? "Submitting..." : "Submit"}
 		</button>
-
-		{#if getShowAuthPrompt()}
-			<div
-				class="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
-			>
-				<div
-					class="bg-white p-8 rounded-2xl max-w-sm w-full mx-4 text-center space-y-4 shadow-lg"
-				>
-					<p class="font-semibold text-lg">Sign in to submit</p>
-					<p class="text-sm text-gray-400">
-						Your story will be submitted automatically.
-					</p>
-					<button
-						onclick={handleSignIn}
-						class="w-full py-3 bg-black text-white text-sm font-medium rounded-lg hover:bg-gray-800 transition-colors"
-					>
-						Sign in with Google
-					</button>
-					<button
-						onclick={() => setShowAuthPrompt(false)}
-						class="text-sm text-gray-400 hover:text-gray-600 transition-colors"
-					>
-						Cancel
-					</button>
-				</div>
-			</div>
-		{/if}
 	{/if}
 </div>
