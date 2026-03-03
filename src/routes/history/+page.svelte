@@ -119,6 +119,15 @@
 	<PageHeader title="History" subtitle="Past prompts and submissions from the community." />
 	<!-- Tabs -->
 	<div class="flex w-full">
+		<button
+			onclick={() => switchTab("archive")}
+			class="flex-1 pb-2.5 text-sm font-medium transition-colors {activeTab ===
+			'archive'
+				? 'text-black border-b-2 border-black'
+				: 'text-gray-400 hover:text-gray-600'}"
+		>
+			Archive
+		</button>
 		{#if getUser()}
 			<button
 				onclick={() => switchTab("mine")}
