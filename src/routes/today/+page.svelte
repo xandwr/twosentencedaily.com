@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { supabase } from "$lib/supabaseClient";
 	import { getDailyPrompt } from "$lib/promptGenerator";
-	import { getUser } from "$lib/auth.svelte";
+	import { getUser, signIn } from "$lib/auth.svelte";
 	import { gradeRank } from "$lib/gradeRank";
 	import KeywordBubbles from "$lib/components/KeywordBubbles.svelte";
 	import PageHeader from "$lib/components/PageHeader.svelte";
 	import SubmissionCard from "$lib/components/SubmissionCard.svelte";
+	import LoadingSkeleton from "$lib/components/LoadingSkeleton.svelte";
 
 	const prompt = getDailyPrompt();
 
@@ -69,7 +70,7 @@
 	</div>
 
 	{#if loading}
-		<p class="text-gray-400 text-sm">Loading...</p>
+		<LoadingSkeleton />
 	{:else if submissions.length === 0}
 		<div class="text-center py-12 space-y-2">
 			<p class="text-gray-500">No submissions yet today.</p>
@@ -78,6 +79,17 @@
 			>
 		</div>
 	{:else}
+		{#if !getUser()}
+			<div class="w-full text-center py-4 space-y-2">
+				<p class="text-sm text-gray-400">Sign in to submit yours</p>
+				<button
+					onclick={signIn}
+					class="px-6 py-2 bg-black text-white text-sm font-medium rounded-lg hover:bg-gray-800 transition-colors"
+				>
+					Sign in with Google
+				</button>
+			</div>
+		{/if}
 		<div class="w-full space-y-4">
 			{#each submissions as sub, i}
 				<SubmissionCard

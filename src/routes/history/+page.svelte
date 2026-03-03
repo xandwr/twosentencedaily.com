@@ -6,6 +6,7 @@
 	import PageHeader from "$lib/components/PageHeader.svelte";
 	import GradeDisplay from "$lib/components/GradeDisplay.svelte";
 	import SubmissionCard from "$lib/components/SubmissionCard.svelte";
+	import LoadingSkeleton from "$lib/components/LoadingSkeleton.svelte";
 
 	type Tab = "archive" | "mine";
 
@@ -132,7 +133,7 @@
 	</div>
 
 	{#if loading}
-		<p class="text-gray-400 text-sm">Loading...</p>
+		<LoadingSkeleton />
 	{:else if activeTab === "archive"}
 		{#if archive.length === 0}
 			<div class="text-center py-12 space-y-2">
@@ -201,6 +202,7 @@
 						score={sub.score}
 						feedback={sub.llm_feedback}
 						showFeedback={true}
+						date={sub.prompt_date}
 					/>
 				{/each}
 			</div>

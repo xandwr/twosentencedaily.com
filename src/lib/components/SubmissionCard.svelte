@@ -12,6 +12,7 @@
 		showFeedback = false,
 		rank = null,
 		displayName = null,
+		date = null,
 	}: {
 		sentence1: string;
 		sentence2: string;
@@ -21,11 +22,15 @@
 		showFeedback?: boolean;
 		rank?: number | null;
 		displayName?: string | null;
+		date?: string | null;
 	} = $props();
 </script>
 
 <div class="border {gradeBorder(grade)} rounded-lg p-5">
-	<div class="flex items-center gap-2 {displayName || rank ? 'mb-3' : ''}">
+	<div class="flex items-center gap-2 {displayName || rank || date ? 'mb-3' : ''}">
+		{#if date}
+			<span class="text-[11px] text-gray-300">{date}</span>
+		{/if}
 		{#if rank}
 			<span class="text-[11px] text-gray-300">#{rank}</span>
 		{/if}

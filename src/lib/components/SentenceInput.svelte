@@ -4,12 +4,21 @@
 		label,
 		placeholder,
 		value = $bindable(""),
+		onsubmit = () => {},
 	}: {
 		id: string;
 		label: string;
 		placeholder: string;
 		value: string;
+		onsubmit?: () => void;
 	} = $props();
+
+	function handleKeydown(e: KeyboardEvent) {
+		if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
+			e.preventDefault();
+			onsubmit();
+		}
+	}
 </script>
 
 <div>
@@ -23,6 +32,7 @@
 		maxlength={150}
 		{placeholder}
 		bind:value
+		onkeydown={handleKeydown}
 	></textarea>
 	<p class="text-right text-[11px] text-gray-300 mt-0.5">
 		{value.length}/150

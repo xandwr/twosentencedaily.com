@@ -6,6 +6,7 @@
 	import KeywordBubbles from "$lib/components/KeywordBubbles.svelte";
 	import GradeDisplay from "$lib/components/GradeDisplay.svelte";
 	import SentenceInput from "$lib/components/SentenceInput.svelte";
+	import LoadingSkeleton from "$lib/components/LoadingSkeleton.svelte";
 	const prompt = getDailyPrompt();
 
 	let sentence1 = $state("");
@@ -122,9 +123,7 @@
 			</button>
 		</div>
 	{:else if !checked}
-		<div class="w-full text-center py-12">
-			<p class="text-gray-400 text-sm">Loading...</p>
-		</div>
+		<LoadingSkeleton lines={1} />
 	{:else if submitted}
 		<div class="w-full text-center py-12 space-y-4">
 			{#if sentence1 || sentence2}
@@ -154,8 +153,8 @@
 	{:else}
 		<!-- Input -->
 		<div class="w-full space-y-4">
-			<SentenceInput id="s1" label="Sentence 1" placeholder="Begin your story..." bind:value={sentence1} />
-			<SentenceInput id="s2" label="Sentence 2" placeholder="End your story..." bind:value={sentence2} />
+			<SentenceInput id="s1" label="Sentence 1" placeholder="Begin your story..." bind:value={sentence1} onsubmit={submit} />
+			<SentenceInput id="s2" label="Sentence 2" placeholder="End your story..." bind:value={sentence2} onsubmit={submit} />
 		</div>
 
 		{#if error}

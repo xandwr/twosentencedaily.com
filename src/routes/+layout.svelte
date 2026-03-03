@@ -46,6 +46,15 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<title>The Two-Sentence Daily</title>
+	<meta name="description" content="A daily creative writing game. Write a two-sentence story from today's prompt and see how you stack up." />
+	<meta property="og:title" content="The Two-Sentence Daily" />
+	<meta property="og:description" content="A daily creative writing game. Write a two-sentence story from today's prompt and see how you stack up." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://twosentencedaily.com" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="The Two-Sentence Daily" />
+	<meta name="twitter:description" content="A daily creative writing game. Write a two-sentence story from today's prompt and see how you stack up." />
 </svelte:head>
 
 <div class="min-h-screen bg-white flex flex-col">
