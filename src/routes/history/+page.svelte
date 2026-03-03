@@ -12,7 +12,7 @@
 		date: string;
 		type: string;
 		keywords: string[];
-		submissions: { sentence1: string; sentence2: string; display_name: string }[];
+		submissions: { sentence1: string; sentence2: string; display_name: string; llm_grade: string | null }[];
 	}
 
 	interface MySubmission {
@@ -20,6 +20,8 @@
 		sentence1: string;
 		sentence2: string;
 		score: number | null;
+		llm_grade: string | null;
+		llm_feedback: string | null;
 		submitted_at: string;
 	}
 
@@ -46,14 +48,14 @@
 		const dates = prompts.map((p) => p.date);
 		const { data: subs } = await supabase
 			.from("submissions")
-			.select("prompt_date, sentence1, sentence2, score, profiles!submissions_profile_id_fkey(username, display_name)")
+			.select("prompt_date, sentence1, sentence2, score, llm_grade, profiles!submissions_profile_id_fkey(username, display_name)")
 			.in("prompt_date", dates)
 			.order("score", { ascending: false, nullsFirst: false })
 			.limit(150);
 
 		const subsByDate = new Map<
 			string,
-			{ sentence1: string; sentence2: string; display_name: string }[]
+			{ sentence1: string; sentence2: string; display_name: string; llm_grade: string | null }[]
 		>();
 		for (const s of (subs ?? []) as any[]) {
 			const list = subsByDate.get(s.prompt_date) ?? [];
@@ -61,6 +63,7 @@
 				sentence1: s.sentence1,
 				sentence2: s.sentence2,
 				display_name: s.profiles?.username ?? s.profiles?.display_name ?? "Anonymous",
+				llm_grade: s.llm_grade,
 			});
 			subsByDate.set(s.prompt_date, list);
 		}
@@ -84,7 +87,7 @@
 
 		const { data } = await supabase
 			.from("submissions")
-			.select("prompt_date, sentence1, sentence2, score, submitted_at")
+			.select("prompt_date, sentence1, sentence2, score, llm_grade, llm_feedback, submitted_at")
 			.eq("user_id", user.id)
 			.order("prompt_date", { ascending: false })
 			.limit(50);
@@ -152,7 +155,12 @@
 							>
 								{#each day.submissions as sub}
 									<div class="text-sm leading-relaxed">
-										<p class="text-xs text-gray-400 mb-1">{sub.display_name}</p>
+										<div class="flex items-center gap-2 mb-1">
+											<p class="text-xs text-gray-400">{sub.display_name}</p>
+											{#if sub.llm_grade}
+												<span class="ml-auto text-xs font-semibold text-gray-400">{sub.llm_grade}</span>
+											{/if}
+										</div>
 										<p>{sub.sentence1}</p>
 										<p class="text-gray-600">
 											{sub.sentence2}
@@ -184,19 +192,22 @@
 			<div class="w-full space-y-4">
 				{#each mySubmissions as sub}
 					<div class="border border-gray-100 rounded-lg p-5">
-						<p class="text-[11px] text-gray-300">
-							{sub.prompt_date}
-						</p>
+						<div class="flex items-center gap-2">
+							<p class="text-[11px] text-gray-300">
+								{sub.prompt_date}
+							</p>
+							{#if sub.llm_grade}
+								<span class="ml-auto text-xs font-semibold text-gray-500">{sub.llm_grade}</span>
+							{/if}
+						</div>
 						<p class="text-sm leading-relaxed mt-2">
 							{sub.sentence1}
 						</p>
 						<p class="text-sm leading-relaxed mt-1">
 							{sub.sentence2}
 						</p>
-						{#if sub.score !== null}
-							<p class="text-[11px] text-gray-300 mt-2">
-								Score: {sub.score.toFixed(3)}
-							</p>
+						{#if sub.llm_feedback}
+							<div class="text-xs text-gray-500 leading-relaxed bg-gray-50 rounded p-3 mt-3 whitespace-pre-wrap">{sub.llm_feedback}</div>
 						{/if}
 					</div>
 				{/each}

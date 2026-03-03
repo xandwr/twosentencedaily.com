@@ -1,14 +1,18 @@
 <script lang="ts">
 	import { supabase } from "$lib/supabaseClient";
 	import { getDailyPrompt } from "$lib/promptGenerator";
+	import { getUser } from "$lib/auth.svelte";
 
 	const prompt = getDailyPrompt();
 
 	interface Submission {
 		id: string;
+		user_id: string;
 		sentence1: string;
 		sentence2: string;
 		score: number | null;
+		llm_grade: string | null;
+		llm_feedback: string | null;
 		submitted_at: string;
 		display_name: string;
 	}
@@ -19,15 +23,18 @@
 	async function loadSubmissions() {
 		const { data } = await supabase
 			.from("submissions")
-			.select("id, sentence1, sentence2, score, submitted_at, profiles!submissions_profile_id_fkey(username, display_name)")
+			.select("id, user_id, sentence1, sentence2, score, llm_grade, llm_feedback, submitted_at, profiles!submissions_profile_id_fkey(username, display_name)")
 			.eq("prompt_date", prompt.date)
 			.order("score", { ascending: false, nullsFirst: false });
 
 		submissions = (data ?? []).map((s: any) => ({
 			id: s.id,
+			user_id: s.user_id,
 			sentence1: s.sentence1,
 			sentence2: s.sentence2,
 			score: s.score,
+			llm_grade: s.llm_grade,
+			llm_feedback: s.llm_feedback,
 			submitted_at: s.submitted_at,
 			display_name: s.profiles?.username ?? s.profiles?.display_name ?? "Anonymous",
 		}));
@@ -71,12 +78,15 @@
 					<div class="flex items-center gap-2 mb-3">
 						<span class="text-[11px] text-gray-300">#{i + 1}</span>
 						<span class="text-xs text-gray-400">{sub.display_name}</span>
-						{#if sub.score !== null}
-							<span class="ml-auto text-xs font-mono text-gray-400">{sub.score.toFixed(1)}x</span>
+						{#if sub.llm_grade}
+							<span class="ml-auto text-xs font-semibold text-gray-500">{sub.llm_grade}</span>
 						{/if}
 					</div>
 					<p class="text-sm leading-relaxed">{sub.sentence1}</p>
 					<p class="text-sm leading-relaxed mt-1">{sub.sentence2}</p>
+					{#if sub.llm_feedback && sub.user_id === getUser()?.id}
+						<div class="text-xs text-gray-500 leading-relaxed bg-gray-50 rounded p-3 mt-3 whitespace-pre-wrap">{sub.llm_feedback}</div>
+					{/if}
 				</div>
 			{/each}
 		</div>
