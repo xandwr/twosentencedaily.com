@@ -2,8 +2,11 @@
 	import { supabase } from "$lib/supabaseClient";
 	import { getUser } from "$lib/auth.svelte";
 	import { getDailyPrompt } from "$lib/promptGenerator";
-	import { renderFeedback } from "$lib/renderFeedback";
-	import { gradeRank } from "$lib/gradeRank";
+	import { gradeRank, gradeColor } from "$lib/gradeRank";
+	import PageHeader from "$lib/components/PageHeader.svelte";
+	import GradeDisplay from "$lib/components/GradeDisplay.svelte";
+	import SubmissionCard from "$lib/components/SubmissionCard.svelte";
+	import LoadingSkeleton from "$lib/components/LoadingSkeleton.svelte";
 
 	type Tab = "archive" | "mine";
 
@@ -113,17 +116,9 @@
 </script>
 
 <div class="flex flex-col items-center gap-6 w-full">
+	<PageHeader title="History" subtitle="Past prompts and submissions from the community." />
 	<!-- Tabs -->
-	<div class="flex w-full border-b border-gray-200">
-		<button
-			onclick={() => switchTab("archive")}
-			class="flex-1 pb-2.5 text-xl font-medium transition-colors {activeTab ===
-			'archive'
-				? 'text-black border-b-2 border-black'
-				: 'text-gray-400 hover:text-gray-600'}"
-		>
-			Archive
-		</button>
+	<div class="flex w-full">
 		{#if getUser()}
 			<button
 				onclick={() => switchTab("mine")}
@@ -138,7 +133,7 @@
 	</div>
 
 	{#if loading}
-		<p class="text-gray-400 text-sm">Loading...</p>
+		<LoadingSkeleton />
 	{:else if activeTab === "archive"}
 		{#if archive.length === 0}
 			<div class="text-center py-12 space-y-2">
@@ -165,7 +160,9 @@
 										<div class="flex items-center gap-2 mb-1">
 											<p class="text-xs text-gray-400">{sub.display_name}</p>
 											{#if sub.llm_grade}
-												<span class="ml-auto text-xs font-semibold text-gray-400">{sub.llm_grade}{#if sub.score} <span class="font-normal text-gray-300">|</span> {sub.score.toFixed(1)}x{/if}</span>
+												<span class="ml-auto">
+													<GradeDisplay grade={sub.llm_grade} score={sub.score} />
+												</span>
 											{/if}
 										</div>
 										<p>{sub.sentence1}</p>
@@ -198,25 +195,15 @@
 		{:else}
 			<div class="w-full space-y-4">
 				{#each mySubmissions as sub}
-					<div class="border border-gray-100 rounded-lg p-5">
-						<div class="flex items-center gap-2">
-							<p class="text-[11px] text-gray-300">
-								{sub.prompt_date}
-							</p>
-							{#if sub.llm_grade}
-								<span class="ml-auto text-xs font-semibold text-gray-500">{sub.llm_grade}{#if sub.score} <span class="font-normal text-gray-300">|</span> {sub.score.toFixed(1)}x{/if}</span>
-							{/if}
-						</div>
-						<p class="text-sm leading-relaxed mt-2">
-							{sub.sentence1}
-						</p>
-						<p class="text-sm leading-relaxed mt-1">
-							{sub.sentence2}
-						</p>
-						{#if sub.llm_feedback}
-							<div class="text-xs text-gray-500 leading-relaxed bg-gray-50 rounded p-3 mt-3 whitespace-pre-wrap">{@html renderFeedback(sub.llm_feedback)}</div>
-						{/if}
-					</div>
+					<SubmissionCard
+						sentence1={sub.sentence1}
+						sentence2={sub.sentence2}
+						grade={sub.llm_grade}
+						score={sub.score}
+						feedback={sub.llm_feedback}
+						showFeedback={true}
+						date={sub.prompt_date}
+					/>
 				{/each}
 			</div>
 		{/if}

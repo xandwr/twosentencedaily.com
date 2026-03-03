@@ -1,9 +1,12 @@
 <script lang="ts">
 	import { supabase } from "$lib/supabaseClient";
 	import { getDailyPrompt } from "$lib/promptGenerator";
-	import { getUser } from "$lib/auth.svelte";
-	import { renderFeedback } from "$lib/renderFeedback";
+	import { getUser, signIn } from "$lib/auth.svelte";
 	import { gradeRank } from "$lib/gradeRank";
+	import KeywordBubbles from "$lib/components/KeywordBubbles.svelte";
+	import PageHeader from "$lib/components/PageHeader.svelte";
+	import SubmissionCard from "$lib/components/SubmissionCard.svelte";
+	import LoadingSkeleton from "$lib/components/LoadingSkeleton.svelte";
 
 	const prompt = getDailyPrompt();
 
@@ -51,25 +54,23 @@
 </script>
 
 <div class="flex flex-col items-center gap-8">
+	<PageHeader title="Today" subtitle="Today's leaderboard. How does yours stack up?" />
 	<!-- Prompt -->
 	<div class="text-center space-y-3">
-		<p class="text-gray-500 text-sm">Today's prompt</p>
-		<h2 class="text-lg">
+		<div class="text-lg flex gap-2 justify-center items-center">
+			<div class="flex gap-2">
+				<p>on</p>
+				<p class="text-lg font-medium text-neutral-500">{prompt.date}</p>
+				<p>we're writing</p>
+			</div>
+
 			<span class="font-semibold">{prompt.type}</span> stories about:
-		</h2>
-		<div class="flex gap-4 justify-center">
-			{#each prompt.keywords as keyword}
-				<span
-					class="px-3 py-1 bg-gray-100 text-sm font-medium rounded-full"
-				>
-					{keyword}
-				</span>
-			{/each}
 		</div>
+		<KeywordBubbles keywords={prompt.keywords} />
 	</div>
 
 	{#if loading}
-		<p class="text-gray-400 text-sm">Loading...</p>
+		<LoadingSkeleton />
 	{:else if submissions.length === 0}
 		<div class="text-center py-12 space-y-2">
 			<p class="text-gray-500">No submissions yet today.</p>
@@ -78,22 +79,29 @@
 			>
 		</div>
 	{:else}
+		{#if !getUser()}
+			<div class="w-full text-center py-4 space-y-2">
+				<p class="text-sm text-gray-400">Sign in to submit yours</p>
+				<button
+					onclick={signIn}
+					class="px-6 py-2 bg-black text-white text-sm font-medium rounded-lg hover:bg-gray-800 transition-colors"
+				>
+					Sign in with Google
+				</button>
+			</div>
+		{/if}
 		<div class="w-full space-y-4">
 			{#each submissions as sub, i}
-				<div class="border border-gray-100 rounded-lg p-5">
-					<div class="flex items-center gap-2 mb-3">
-						<span class="text-[11px] text-gray-300">#{i + 1}</span>
-						<span class="text-xs text-gray-400">{sub.display_name}</span>
-						{#if sub.llm_grade}
-							<span class="ml-auto text-xs font-semibold text-gray-500">{sub.llm_grade}{#if sub.score} <span class="font-normal text-gray-300">|</span> {sub.score.toFixed(1)}x{/if}</span>
-						{/if}
-					</div>
-					<p class="text-sm leading-relaxed">{sub.sentence1}</p>
-					<p class="text-sm leading-relaxed mt-1">{sub.sentence2}</p>
-					{#if sub.llm_feedback && sub.user_id === getUser()?.id}
-						<div class="text-xs text-gray-500 leading-relaxed bg-gray-50 rounded p-3 mt-3 whitespace-pre-wrap">{@html renderFeedback(sub.llm_feedback)}</div>
-					{/if}
-				</div>
+				<SubmissionCard
+					sentence1={sub.sentence1}
+					sentence2={sub.sentence2}
+					grade={sub.llm_grade}
+					score={sub.score}
+					feedback={sub.llm_feedback}
+					showFeedback={sub.user_id === getUser()?.id}
+					rank={i + 1}
+					displayName={sub.display_name}
+				/>
 			{/each}
 		</div>
 	{/if}
