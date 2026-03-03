@@ -66,6 +66,7 @@
 	}
 
 	let score = $state<number | null>(null);
+	let multiplier = $state<number | null>(null);
 
 	async function submit() {
 		if (!sentence1.trim() || !sentence2.trim()) return;
@@ -107,6 +108,7 @@
 			} else {
 				submitted = true;
 				score = data.score;
+				multiplier = data.multiplier;
 			}
 		} catch (e) {
 			error = "Network error. Try again.";
@@ -146,9 +148,9 @@
 	{#if submitted}
 		<div class="w-full text-center py-12 space-y-2">
 			<p class="text-2xl font-semibold">Submitted</p>
-			{#if score !== null}
-				<p class="text-lg font-mono">{(score * 100).toFixed(1)}%</p>
-				<p class="text-gray-400 text-sm">alignment score</p>
+			{#if multiplier !== null}
+				<p class="text-lg font-mono">{multiplier.toFixed(1)}x</p>
+				<p class="text-gray-400 text-sm">above random</p>
 			{/if}
 			<p class="text-gray-400 text-sm">
 				Come back tomorrow for a new prompt.

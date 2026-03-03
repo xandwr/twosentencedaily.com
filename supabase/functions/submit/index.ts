@@ -194,21 +194,22 @@ function computeScore(
     evecs.push(eigenvectors.slice(i * dim, (i + 1) * dim));
   }
 
-  // Score = weighted sum of squared projections onto eigenvectors
-  // Weight by eigenvalue (variance explained)
-  const totalVariance = eigenvalues.reduce((a, b) => a + Math.abs(b), 0);
-  if (totalVariance === 0) return 0;
-
-  let score = 0;
+  // Project response onto the keyword subspace (span of eigenvectors)
+  // Only use eigenvectors with non-negligible eigenvalues
+  const proj = new Array(dim).fill(0);
   for (let i = 0; i < numVecs; i++) {
-    const projection = dot(responseEmbedding, evecs[i]);
-    const weight = Math.abs(eigenvalues[i]) / totalVariance;
-    score += weight * projection * projection;
+    if (Math.abs(eigenvalues[i]) < 1e-10) continue;
+    const coeff = dot(responseEmbedding, evecs[i]);
+    for (let d = 0; d < dim; d++) proj[d] += coeff * evecs[i][d];
   }
 
-  // Normalize to [0, 1] range — projection^2 of unit vectors is at most 1
-  // so score is at most 1 (when perfectly aligned with dominant eigenvector)
-  return Math.min(1, score);
+  // Score = ||projection|| / ||response||
+  // Cosine of the angle between response and the subspace
+  const projNorm = vecNorm(proj);
+  const respNorm = vecNorm(responseEmbedding);
+  if (respNorm === 0) return 0;
+
+  return projNorm / respNorm;
 }
 
 // --- Supabase client ---
@@ -343,8 +344,11 @@ Deno.serve(async (req) => {
 
     // Compute score
     const score = computeScore(responseEmbedding, eigenvectorsFlat, eigenvalues);
+    const dim = responseEmbedding.length;
+    const baseline = Math.sqrt(2 / dim);
+    const multiplier = score / baseline;
 
-    // Insert submission with score
+    // Insert submission with multiplier as score
     const { error: insertError } = await supabaseAdmin
       .from("submissions")
       .insert({
@@ -352,7 +356,7 @@ Deno.serve(async (req) => {
         prompt_date: date,
         sentence1: sentence1.trim(),
         sentence2: sentence2.trim(),
-        score,
+        score: multiplier,
       });
 
     if (insertError) {
@@ -377,7 +381,7 @@ Deno.serve(async (req) => {
       );
     }
 
-    return jsonResponse({ score, date: prompt.date });
+    return jsonResponse({ score, multiplier, date: prompt.date });
   } catch (err) {
     console.error("Submit error:", err);
     return jsonResponse(

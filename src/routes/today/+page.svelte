@@ -72,7 +72,7 @@
 						<span class="text-[11px] text-gray-300">#{i + 1}</span>
 						<span class="text-xs text-gray-400">{sub.display_name}</span>
 						{#if sub.score !== null}
-							<span class="ml-auto text-xs font-mono text-gray-400">{(sub.score * 100).toFixed(1)}%</span>
+							<span class="ml-auto text-xs font-mono text-gray-400">{sub.score.toFixed(1)}x</span>
 						{/if}
 					</div>
 					<p class="text-sm leading-relaxed">{sub.sentence1}</p>

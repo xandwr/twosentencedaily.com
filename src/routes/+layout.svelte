@@ -6,6 +6,7 @@
 		getUsername,
 		updateUsername,
 		signOut,
+        signIn,
 	} from "$lib/auth.svelte";
 	import { page } from "$app/state";
 
@@ -50,9 +51,7 @@
 	<header class="border-b border-gray-200">
 		<div class="max-w-2xl mx-auto px-4 pt-6 pb-4">
 			<a href="/" class="block text-center">
-				<p
-					class="text-[10px] uppercase tracking-[0.3em] text-gray-400"
-				>
+				<p class="text-[10px] uppercase tracking-[0.3em] text-gray-400">
 					The
 				</p>
 				<h1 class="text-3xl font-bold tracking-tight">
@@ -103,7 +102,10 @@
 							onclick={saveUsername}
 							class="hover:text-gray-600">Save</button
 						>
-						<button onclick={cancelEditing} class="hover:text-gray-600">
+						<button
+							onclick={cancelEditing}
+							class="hover:text-gray-600"
+						>
 							Cancel
 						</button>
 					</div>
@@ -122,6 +124,12 @@
 				<span class="text-gray-200">|</span>
 				<button onclick={signOut} class="hover:text-gray-600">
 					Sign out
+				</button>
+			</div>
+		{:else}
+			<div>
+				<button onclick={signIn} class="hover:text-gray-600">
+					Sign in
 				</button>
 			</div>
 		{/if}
