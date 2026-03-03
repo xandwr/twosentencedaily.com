@@ -9,6 +9,7 @@
 	let submitted = $state(false);
 	let submitting = $state(false);
 	let error = $state("");
+	let checked = $state(false);
 
 	// Check on mount and when user changes (e.g. after OAuth redirect)
 	$effect(() => {
@@ -28,6 +29,7 @@
 			submitted = true;
 			multiplier = data.multiplier;
 		}
+		checked = true;
 	}
 
 	let score = $state<number | null>(null);
@@ -120,6 +122,10 @@
 			>
 				Sign in with Google
 			</button>
+		</div>
+	{:else if !checked}
+		<div class="w-full text-center py-12">
+			<p class="text-gray-400 text-sm">Loading...</p>
 		</div>
 	{:else if submitted}
 		<div class="w-full text-center py-12 space-y-2">
