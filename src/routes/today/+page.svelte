@@ -2,6 +2,7 @@
 	import { supabase } from "$lib/supabaseClient";
 	import { getDailyPrompt } from "$lib/promptGenerator";
 	import { getUser } from "$lib/auth.svelte";
+	import { renderFeedback } from "$lib/renderFeedback";
 
 	const prompt = getDailyPrompt();
 
@@ -85,7 +86,7 @@
 					<p class="text-sm leading-relaxed">{sub.sentence1}</p>
 					<p class="text-sm leading-relaxed mt-1">{sub.sentence2}</p>
 					{#if sub.llm_feedback && sub.user_id === getUser()?.id}
-						<div class="text-xs text-gray-500 leading-relaxed bg-gray-50 rounded p-3 mt-3 whitespace-pre-wrap">{sub.llm_feedback}</div>
+						<div class="text-xs text-gray-500 leading-relaxed bg-gray-50 rounded p-3 mt-3 whitespace-pre-wrap">{@html renderFeedback(sub.llm_feedback)}</div>
 					{/if}
 				</div>
 			{/each}

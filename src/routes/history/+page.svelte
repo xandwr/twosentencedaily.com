@@ -2,6 +2,7 @@
 	import { supabase } from "$lib/supabaseClient";
 	import { getUser } from "$lib/auth.svelte";
 	import { getDailyPrompt } from "$lib/promptGenerator";
+	import { renderFeedback } from "$lib/renderFeedback";
 
 	type Tab = "archive" | "mine";
 
@@ -207,7 +208,7 @@
 							{sub.sentence2}
 						</p>
 						{#if sub.llm_feedback}
-							<div class="text-xs text-gray-500 leading-relaxed bg-gray-50 rounded p-3 mt-3 whitespace-pre-wrap">{sub.llm_feedback}</div>
+							<div class="text-xs text-gray-500 leading-relaxed bg-gray-50 rounded p-3 mt-3 whitespace-pre-wrap">{@html renderFeedback(sub.llm_feedback)}</div>
 						{/if}
 					</div>
 				{/each}
