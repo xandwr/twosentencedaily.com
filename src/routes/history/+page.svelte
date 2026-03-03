@@ -12,7 +12,7 @@
 		date: string;
 		type: string;
 		keywords: string[];
-		submissions: { sentence1: string; sentence2: string }[];
+		submissions: { sentence1: string; sentence2: string; display_name: string }[];
 	}
 
 	interface MySubmission {
@@ -29,7 +29,6 @@
 	async function loadArchive() {
 		loading = true;
 
-		// Get all past prompts (not today)
 		const today = getDailyPrompt().date;
 		const { data: prompts } = await supabase
 			.from("daily_prompts")
@@ -44,22 +43,25 @@
 			return;
 		}
 
-		// Get top submissions for each date
 		const dates = prompts.map((p) => p.date);
 		const { data: subs } = await supabase
 			.from("submissions")
-			.select("prompt_date, sentence1, sentence2, score")
+			.select("prompt_date, sentence1, sentence2, score, profiles!submissions_profile_id_fkey(username, display_name)")
 			.in("prompt_date", dates)
 			.order("score", { ascending: false, nullsFirst: false })
 			.limit(150);
 
 		const subsByDate = new Map<
 			string,
-			{ sentence1: string; sentence2: string }[]
+			{ sentence1: string; sentence2: string; display_name: string }[]
 		>();
-		for (const s of subs ?? []) {
+		for (const s of (subs ?? []) as any[]) {
 			const list = subsByDate.get(s.prompt_date) ?? [];
-			if (list.length < 5) list.push(s);
+			if (list.length < 5) list.push({
+				sentence1: s.sentence1,
+				sentence2: s.sentence2,
+				display_name: s.profiles?.username ?? s.profiles?.display_name ?? "Anonymous",
+			});
 			subsByDate.set(s.prompt_date, list);
 		}
 
@@ -97,26 +99,28 @@
 		else loadMine();
 	}
 
-	// Initial load
 	loadArchive();
 </script>
 
-<div class="w-full flex flex-col gap-y-4 items-center">
-	<div class="flex w-full">
+<div class="flex flex-col items-center gap-6 w-full">
+	<!-- Tabs -->
+	<div class="flex w-full border-b border-gray-200">
 		<button
 			onclick={() => switchTab("archive")}
-			class="w-full p-2 transition-colors {activeTab === 'archive'
-				? 'bg-blue-600 text-white'
-				: 'bg-blue-400 hover:bg-blue-500'}"
+			class="flex-1 pb-2.5 text-sm font-medium transition-colors {activeTab ===
+			'archive'
+				? 'text-black border-b-2 border-black'
+				: 'text-gray-400 hover:text-gray-600'}"
 		>
 			Archive
 		</button>
 		{#if getUser()}
 			<button
 				onclick={() => switchTab("mine")}
-				class="w-full p-2 transition-colors {activeTab === 'mine'
-					? 'bg-blue-600 text-white'
-					: 'bg-blue-400 hover:bg-blue-500'}"
+				class="flex-1 pb-2.5 text-sm font-medium transition-colors {activeTab ===
+				'mine'
+					? 'text-black border-b-2 border-black'
+					: 'text-gray-400 hover:text-gray-600'}"
 			>
 				My Submissions
 			</button>
@@ -124,37 +128,40 @@
 	</div>
 
 	{#if loading}
-		<p class="opacity-60">Loading...</p>
+		<p class="text-gray-400 text-sm">Loading...</p>
 	{:else if activeTab === "archive"}
 		{#if archive.length === 0}
-			<div class="bg-blue-400 w-full p-8 text-center">
-				<p class="text-lg">No past prompts yet.</p>
-				<p class="text-sm opacity-70">Check back tomorrow!</p>
+			<div class="text-center py-12 space-y-2">
+				<p class="text-gray-500">No past prompts yet.</p>
+				<p class="text-sm text-gray-400">Check back tomorrow!</p>
 			</div>
 		{:else}
-			<div class="flex flex-col gap-y-6 w-full">
+			<div class="w-full space-y-6">
 				{#each archive as day}
-					<div class="bg-blue-400 p-4 w-full">
-						<p class="text-xs opacity-50">{day.date}</p>
-						<p class="font-bold">
+					<div class="border border-gray-100 rounded-lg p-5">
+						<p class="text-[11px] text-gray-300">{day.date}</p>
+						<p class="font-semibold text-sm mt-1">
 							{day.type}
-							<span class="font-normal opacity-70">
-								— {day.keywords.join(", ")}
+							<span class="font-normal text-gray-400">
+								&mdash; {day.keywords.join(", ")}
 							</span>
 						</p>
 						{#if day.submissions.length > 0}
-							<div class="mt-2 flex flex-col gap-y-2">
+							<div
+								class="mt-3 space-y-2 border-t border-gray-50 pt-3"
+							>
 								{#each day.submissions as sub}
-									<div
-										class="bg-blue-300/50 p-3 text-sm italic"
-									>
+									<div class="text-sm leading-relaxed">
+										<p class="text-xs text-gray-400 mb-1">{sub.display_name}</p>
 										<p>{sub.sentence1}</p>
-										<p>{sub.sentence2}</p>
+										<p class="text-gray-600">
+											{sub.sentence2}
+										</p>
 									</div>
 								{/each}
 							</div>
 						{:else}
-							<p class="text-sm opacity-50 mt-1">
+							<p class="text-xs text-gray-300 mt-2">
 								No submissions
 							</p>
 						{/if}
@@ -164,21 +171,30 @@
 		{/if}
 	{:else if activeTab === "mine"}
 		{#if mySubmissions.length === 0}
-			<div class="bg-blue-400 w-full p-8 text-center">
-				<p class="text-lg">No submissions yet.</p>
-				<p class="text-sm opacity-70">
-					<a href="/" class="underline">Write your first story!</a>
-				</p>
+			<div class="text-center py-12 space-y-2">
+				<p class="text-gray-500">No submissions yet.</p>
+				<a
+					href="/"
+					class="text-sm text-black underline underline-offset-2"
+				>
+					Write your first story
+				</a>
 			</div>
 		{:else}
-			<div class="flex flex-col gap-y-4 w-full">
+			<div class="w-full space-y-4">
 				{#each mySubmissions as sub}
-					<div class="bg-blue-400 p-4 w-full">
-						<p class="text-xs opacity-50">{sub.prompt_date}</p>
-						<p class="italic">{sub.sentence1}</p>
-						<p class="italic">{sub.sentence2}</p>
+					<div class="border border-gray-100 rounded-lg p-5">
+						<p class="text-[11px] text-gray-300">
+							{sub.prompt_date}
+						</p>
+						<p class="text-sm leading-relaxed mt-2">
+							{sub.sentence1}
+						</p>
+						<p class="text-sm leading-relaxed mt-1">
+							{sub.sentence2}
+						</p>
 						{#if sub.score !== null}
-							<p class="text-xs opacity-60 mt-1">
+							<p class="text-[11px] text-gray-300 mt-2">
 								Score: {sub.score.toFixed(3)}
 							</p>
 						{/if}

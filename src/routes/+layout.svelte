@@ -1,10 +1,39 @@
 <script lang="ts">
 	import "../global.css";
 	import favicon from "$lib/assets/favicon.svg";
-	import { getUser, signOut } from "$lib/auth.svelte";
+	import {
+		getUser,
+		getUsername,
+		updateUsername,
+		signOut,
+	} from "$lib/auth.svelte";
 	import { page } from "$app/state";
 
 	let { children } = $props();
+
+	let editing = $state(false);
+	let usernameInput = $state("");
+	let usernameError = $state("");
+
+	function startEditing() {
+		usernameInput = getUsername() ?? "";
+		usernameError = "";
+		editing = true;
+	}
+
+	async function saveUsername() {
+		const err = await updateUsername(usernameInput);
+		if (err) {
+			usernameError = err;
+			return;
+		}
+		editing = false;
+	}
+
+	function cancelEditing() {
+		editing = false;
+		usernameError = "";
+	}
 
 	const navItems = [
 		{ href: "/", label: "Play" },
@@ -17,44 +46,84 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<div
-	class="bg-blue-300 w-screen h-screen flex flex-col items-center justify-between gap-y-8 max-w-3xl m-auto p-8"
->
-	<div class="w-full flex flex-col items-center gap-y-4">
-		<div class="text-4xl bg-blue-400 w-full p-4 text-center">
-			<h3 class="text-sm">THE</h3>
-			<h1><a href="/">Two-Sentence Daily</a></h1>
+<div class="min-h-screen bg-white flex flex-col">
+	<header class="border-b border-gray-200">
+		<div class="max-w-2xl mx-auto px-4 pt-6 pb-4">
+			<a href="/" class="block text-center">
+				<p
+					class="text-[10px] uppercase tracking-[0.3em] text-gray-400"
+				>
+					The
+				</p>
+				<h1 class="text-3xl font-bold tracking-tight">
+					Two-Sentence Daily
+				</h1>
+			</a>
 		</div>
 
-		<nav class="flex gap-x-16 bg-blue-500 w-full justify-between text-center">
+		<nav class="max-w-2xl mx-auto flex border-t border-gray-100">
 			{#each navItems as { href, label }}
 				<a
-					class="w-full transition-colors {page.url.pathname === href
-						? 'bg-blue-700 text-white'
-						: 'bg-blue-600 hover:bg-blue-500'}"
+					class="flex-1 text-center py-2.5 text-sm font-medium transition-colors {page
+						.url.pathname === href
+						? 'text-black border-b-2 border-black'
+						: 'text-gray-400 hover:text-gray-600'}"
 					{href}
 				>
 					{label}
 				</a>
 			{/each}
 		</nav>
-	</div>
+	</header>
 
-	<div class="w-full flex-1 flex flex-col gap-y-4 items-center">
+	<main class="flex-1 max-w-2xl mx-auto w-full px-4 py-8">
 		{@render children()}
-	</div>
+	</main>
 
-	<div
-		class="bg-blue-400 w-full text-center p-4 flex justify-between items-center"
+	<footer
+		class="border-t border-gray-100 max-w-2xl mx-auto w-full px-4 py-4 flex justify-between items-center text-xs text-gray-400"
 	>
-		<h1><a href="https://github.com/xandwr">@xandwr</a> 2026</h1>
+		<a href="https://github.com/xandwr" class="hover:text-gray-600">
+			@xandwr 2026
+		</a>
 		{#if getUser()}
-			<button
-				onclick={signOut}
-				class="text-sm opacity-60 hover:opacity-100"
-			>
-				Sign out
-			</button>
+			<div class="flex items-center gap-3">
+				{#if editing}
+					<div class="flex items-center gap-1.5">
+						<input
+							type="text"
+							class="border border-gray-200 rounded px-2 py-0.5 text-xs w-28 focus:outline-none focus:border-gray-400"
+							bind:value={usernameInput}
+							onkeydown={(e) => {
+								if (e.key === "Enter") saveUsername();
+								if (e.key === "Escape") cancelEditing();
+							}}
+						/>
+						<button
+							onclick={saveUsername}
+							class="hover:text-gray-600">Save</button
+						>
+						<button onclick={cancelEditing} class="hover:text-gray-600">
+							Cancel
+						</button>
+					</div>
+					{#if usernameError}
+						<span class="text-red-400">{usernameError}</span>
+					{/if}
+				{:else}
+					<button
+						onclick={startEditing}
+						class="hover:text-gray-600"
+						title="Change username"
+					>
+						{getUsername() ?? "set username"}
+					</button>
+				{/if}
+				<span class="text-gray-200">|</span>
+				<button onclick={signOut} class="hover:text-gray-600">
+					Sign out
+				</button>
+			</div>
 		{/if}
-	</div>
+	</footer>
 </div>
