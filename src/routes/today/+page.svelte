@@ -3,7 +3,7 @@
 	import { getDailyPrompt } from "$lib/promptGenerator";
 	import { getUser } from "$lib/auth.svelte";
 	import { renderFeedback } from "$lib/renderFeedback";
-	import { gradeRank, gradeColor } from "$lib/gradeRank";
+	import { gradeRank, gradeColor, gradeBorder } from "$lib/gradeRank";
 
 	const prompt = getDailyPrompt();
 
@@ -89,7 +89,7 @@
 	{:else}
 		<div class="w-full space-y-4">
 			{#each submissions as sub, i}
-				<div class="border border-gray-100 rounded-lg p-5">
+				<div class="border {gradeBorder(sub.llm_grade)} rounded-lg p-5">
 					<div class="flex items-center gap-2 mb-3">
 						<span class="text-[11px] text-gray-300">#{i + 1}</span>
 						<span class="text-xs text-gray-400">{sub.display_name}</span>

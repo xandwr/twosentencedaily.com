@@ -101,7 +101,7 @@
 <div class="flex flex-col items-center gap-8">
 	<!-- Prompt -->
 	<div class="text-center space-y-3">
-		<p class="text-gray-500 text-sm">Today's prompt</p>
+		<p class="text-gray-500 text-lg">{prompt.date}</p>
 		<h2 class="text-lg">
 			Write a two-sentence
 			<span class="font-semibold">{prompt.type}</span> story about:

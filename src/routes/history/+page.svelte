@@ -3,7 +3,7 @@
 	import { getUser } from "$lib/auth.svelte";
 	import { getDailyPrompt } from "$lib/promptGenerator";
 	import { renderFeedback } from "$lib/renderFeedback";
-	import { gradeRank, gradeColor } from "$lib/gradeRank";
+	import { gradeRank, gradeColor, gradeBorder } from "$lib/gradeRank";
 
 	type Tab = "archive" | "mine";
 
@@ -193,7 +193,7 @@
 		{:else}
 			<div class="w-full space-y-4">
 				{#each mySubmissions as sub}
-					<div class="border border-gray-100 rounded-lg p-5">
+					<div class="border {gradeBorder(sub.llm_grade)} rounded-lg p-5">
 						<div class="flex items-center gap-2">
 							<p class="text-[11px] text-gray-300">
 								{sub.prompt_date}
