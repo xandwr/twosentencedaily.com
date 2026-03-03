@@ -8,6 +8,7 @@
 		id: string;
 		sentence1: string;
 		sentence2: string;
+		score: number | null;
 		submitted_at: string;
 		display_name: string;
 	}
@@ -18,14 +19,15 @@
 	async function loadSubmissions() {
 		const { data } = await supabase
 			.from("submissions")
-			.select("id, sentence1, sentence2, submitted_at, profiles!submissions_profile_id_fkey(username, display_name)")
+			.select("id, sentence1, sentence2, score, submitted_at, profiles!submissions_profile_id_fkey(username, display_name)")
 			.eq("prompt_date", prompt.date)
-			.order("submitted_at", { ascending: true });
+			.order("score", { ascending: false, nullsFirst: false });
 
 		submissions = (data ?? []).map((s: any) => ({
 			id: s.id,
 			sentence1: s.sentence1,
 			sentence2: s.sentence2,
+			score: s.score,
 			submitted_at: s.submitted_at,
 			display_name: s.profiles?.username ?? s.profiles?.display_name ?? "Anonymous",
 		}));
@@ -69,6 +71,9 @@
 					<div class="flex items-center gap-2 mb-3">
 						<span class="text-[11px] text-gray-300">#{i + 1}</span>
 						<span class="text-xs text-gray-400">{sub.display_name}</span>
+						{#if sub.score !== null}
+							<span class="ml-auto text-xs font-mono text-gray-400">{(sub.score * 100).toFixed(1)}%</span>
+						{/if}
 					</div>
 					<p class="text-sm leading-relaxed">{sub.sentence1}</p>
 					<p class="text-sm leading-relaxed mt-1">{sub.sentence2}</p>

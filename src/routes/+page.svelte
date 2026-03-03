@@ -65,17 +65,7 @@
 		if (data) submitted = true;
 	}
 
-	async function ensurePromptExists() {
-		const { error: err } = await supabase.from("daily_prompts").upsert(
-			{
-				date: prompt.date,
-				type: prompt.type,
-				keywords: prompt.keywords,
-			},
-			{ onConflict: "date" },
-		);
-		return err;
-	}
+	let score = $state<number | null>(null);
 
 	async function submit() {
 		if (!sentence1.trim() || !sentence2.trim()) return;
@@ -93,29 +83,45 @@
 		submitting = true;
 		error = "";
 
-		const promptErr = await ensurePromptExists();
-		if (promptErr) {
-			error = "Failed to initialize prompt. Try again.";
-			submitting = false;
-			return;
-		}
-
-		const { error: subErr } = await supabase.from("submissions").insert({
-			user_id: user.id,
-			prompt_date: prompt.date,
-			sentence1: sentence1.trim(),
-			sentence2: sentence2.trim(),
-		});
-
-		if (subErr) {
-			if (subErr.code === "23505") {
-				error = "You already submitted today!";
-				submitted = true;
-			} else {
-				error = subErr.message;
+		try {
+			const session = (await supabase.auth.getSession()).data.session;
+			if (!session) {
+				error = "Session expired. Please sign in again.";
+				submitting = false;
+				return;
 			}
-		} else {
-			submitted = true;
+
+			const res = await fetch(
+				`${import.meta.env.VITE_SUPABASE_URL || "https://eqaseqbtrbmskbfmtjpj.supabase.co"}/functions/v1/submit`,
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${session.access_token}`,
+					},
+					body: JSON.stringify({
+						date: prompt.date,
+						sentence1: sentence1.trim(),
+						sentence2: sentence2.trim(),
+					}),
+				},
+			);
+
+			const data = await res.json();
+
+			if (!res.ok) {
+				if (res.status === 409) {
+					error = "You already submitted today!";
+					submitted = true;
+				} else {
+					error = data.error || "Submission failed. Try again.";
+				}
+			} else {
+				submitted = true;
+				score = data.score;
+			}
+		} catch (e) {
+			error = "Network error. Try again.";
 		}
 
 		submitting = false;
@@ -152,6 +158,10 @@
 	{#if submitted}
 		<div class="w-full text-center py-12 space-y-2">
 			<p class="text-2xl font-semibold">Submitted</p>
+			{#if score !== null}
+				<p class="text-lg font-mono">{(score * 100).toFixed(1)}%</p>
+				<p class="text-gray-400 text-sm">alignment score</p>
+			{/if}
 			<p class="text-gray-400 text-sm">
 				Come back tomorrow for a new prompt.
 			</p>
