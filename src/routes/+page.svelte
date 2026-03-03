@@ -21,13 +21,13 @@
 		if (!user) return;
 		const { data } = await supabase
 			.from("submissions")
-			.select("id, multiplier")
+			.select("id, score")
 			.eq("user_id", user.id)
 			.eq("prompt_date", prompt.date)
 			.maybeSingle();
 		if (data) {
 			submitted = true;
-			multiplier = data.multiplier;
+			multiplier = data.score;
 		}
 		checked = true;
 	}
