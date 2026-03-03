@@ -20,15 +20,37 @@
 		if (!user) return;
 		const { data } = await supabase
 			.from("submissions")
-			.select("id")
+			.select("id, multiplier")
 			.eq("user_id", user.id)
 			.eq("prompt_date", prompt.date)
 			.maybeSingle();
-		if (data) submitted = true;
+		if (data) {
+			submitted = true;
+			multiplier = data.multiplier;
+		}
 	}
 
 	let score = $state<number | null>(null);
 	let multiplier = $state<number | null>(null);
+	let shared = $state(false);
+
+	function shareText(mult: number): string {
+		const clamped = Math.min(Math.max(mult, 0), 10);
+		const full = Math.floor(clamped);
+		const frac = clamped - full;
+		const partial = frac >= 0.5 ? 1 : frac > 0 ? 1 : 0;
+		const filled = "█".repeat(full);
+		const mid = partial ? "▒" : "";
+		const empty = "░".repeat(10 - full - partial);
+		return `The Two-Sentence Daily | ${mult.toFixed(1)}x\n${filled}${mid}${empty}\ntwosentencedaily.com`;
+	}
+
+	async function share() {
+		if (multiplier === null) return;
+		await navigator.clipboard.writeText(shareText(multiplier));
+		shared = true;
+		setTimeout(() => (shared = false), 2000);
+	}
 
 	async function submit() {
 		if (!sentence1.trim() || !sentence2.trim()) return;
@@ -105,6 +127,12 @@
 			{#if multiplier !== null}
 				<p class="text-lg font-mono">{multiplier.toFixed(1)}x</p>
 				<p class="text-gray-400 text-sm">above random</p>
+				<button
+					onclick={share}
+					class="mt-4 px-6 py-2 border border-gray-200 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors"
+				>
+					{shared ? "Copied!" : "Share"}
+				</button>
 			{/if}
 			<p class="text-gray-400 text-sm">
 				Come back tomorrow for a new prompt.
